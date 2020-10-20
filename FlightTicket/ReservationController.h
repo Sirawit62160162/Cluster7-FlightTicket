@@ -1,11 +1,12 @@
 #ifndef RESERVATIONCONTROLLER_H
 #define RESERVATIONCONTROLLER_H
 #include"FlightTicket.h"
+#include"Customer.h"
 
 class ReservationController
 {
 	public:
-    	void Register(string firstname,string lastname,string username,string password);
+    	void Register(string firstname,string lastname,string passportId,string username,string password);
 		void login(string username,string password);
 		void reserveTicket( string flightCode );
 		void getSeat(string flightCode);  

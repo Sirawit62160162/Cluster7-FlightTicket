@@ -1,6 +1,7 @@
 #ifndef UI_H
 #define UI_H
 #include"FlightTicket.h"
+#include"ReservationController.h"
 
 class UI
 {
