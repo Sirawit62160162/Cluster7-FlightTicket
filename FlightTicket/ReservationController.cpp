@@ -5,8 +5,12 @@ void ReservationController::Register(string firstname,string lastname,string pas
 	regis->saveRegister(firstname,lastname,passportId,username,password);
 }
 
-void ReservationController::login(string username,string password){
-	
+bool ReservationController::login(string username,string password){
+	Customer *login = new Customer();
+	int status;
+	status = login->checkLogin(username,password);
+	delete login;
+	return status;
 }
 
 void ReservationController::reserveTicket( string flightCode ){

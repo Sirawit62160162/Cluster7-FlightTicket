@@ -7,7 +7,8 @@ class UI
 {
 	public:
 		void Register(string firstname,string lastname,string passportId,string username,string password);
-		void login(string username,string password);
+		bool login(string username,string password);
+		int test();
 		void reserveTicket(string flightCode );
 		void reserveSeat(string seatId);
 		void showFlight();

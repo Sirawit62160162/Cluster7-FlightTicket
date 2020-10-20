@@ -1,11 +1,18 @@
 #include "UI.h"
-
+int UI::test(){
+	int i =6;
+	return i;
+}
 void UI::Register(string firstname,string lastname,string passportId,string username,string password){
 	ReservationController *regis = new ReservationController();
 	regis->Register(firstname,lastname,passportId,username,password);
 }
-void UI::login(string username,string password){
-	
+bool UI::login(string username,string password){
+	ReservationController *login = new  ReservationController();
+	int status;
+	status = login->login(username,password);
+	delete login;
+	return status;
 	
 }
 void UI::reserveTicket(string flightCode ){
