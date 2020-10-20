@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include<string>
 #include<iostream>
 #include<iomanip>
@@ -11,16 +12,23 @@
 #include"Flight.h"
 #include"Seat.h"
 using namespace std;
+=======
+#include "FlightTicket.h"
+#include "UI.h"
+>>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
-
 int main(int argc, char** argv) {
 	int choose;
+	int check;
 	string firstName,lastName,ppId,username,password;
+<<<<<<< HEAD
 	string start,destination,departTime,arriveTime,flightCode;
 	double price;
 	
+=======
+>>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 	UI *interface = new UI();
-	do{
+	//do{
 		MainMenu :
 			system("cls");
 			cout << "===== Reservation Fight Ticket =====" << endl;
@@ -32,9 +40,14 @@ int main(int argc, char** argv) {
 			cin >> choose;
 			switch(choose){
 				case 1 :{
+<<<<<<< HEAD
 							Customer :
 								cout << endl; 
 								//system("cls");
+=======
+							Customer : 
+							system("cls");
+>>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 								cout << "===== Customer =====" << endl;
 								cout << "1. Login" << endl;
 								cout << "2. Register" << endl;
@@ -49,6 +62,7 @@ int main(int argc, char** argv) {
 										cout << "Enter Username : ";
 										cin >> username;
 										cout << "Enter Password : ";
+<<<<<<< HEAD
 										cin >> password; 								
 										
 										if(interface->login(username,password) == true){
@@ -63,6 +77,18 @@ int main(int argc, char** argv) {
 											cout << "** Login Failed **" << endl;
 											goto Customer;
 										}
+=======
+										cin >> password; 
+										check = interface->login(username,password);
+										if(check == 1){
+											cout << "==================" << endl;
+											cout << " Login Success" << endl;
+										}else{
+											cout << "==================" << endl;
+											cout << " Login Fail" << endl;
+										}
+										break;
+>>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 									}//Login
 									case 2 :{
 										cout << endl;
@@ -77,13 +103,20 @@ int main(int argc, char** argv) {
 										cin >> username;
 										cout << "Enter Password : ";
 										cin >> password; 
+<<<<<<< HEAD
 										
 										if(interface->Register(firstName,lastName,ppId,username,password) == true);
 											cout << "** Register Success **" << endl;
+=======
+										interface->Register(firstName,lastName,ppId,username,password);
+>>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 										goto Customer;
+										break;
 									}//Register
-									case 3 : goto MainMenu; 
-									default : goto Customer;
+									case 3 : //goto MainMenu;
+											break; 
+									default : //goto Customer;
+											break;
 								}//Customer
 				}//Customer
 				case 2 :{
@@ -185,6 +218,6 @@ int main(int argc, char** argv) {
 				}//Exit
 				default : goto MainMenu;
 			}//switch Pre-Main Menu
-	}while(true);	
+	//}while(true);	
 	return 0;
 }

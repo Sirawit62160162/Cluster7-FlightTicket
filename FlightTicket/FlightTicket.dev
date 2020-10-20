@@ -29,7 +29,11 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
+<<<<<<< HEAD
 UnitCount=13
+=======
+UnitCount=15
+>>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 
 [VersionInfo]
 Major=1
@@ -80,6 +84,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+<<<<<<< HEAD
 [Unit6]
 FileName=Seat.h
 CompileCpp=1
@@ -92,6 +97,10 @@ BuildCmd=
 
 [Unit7]
 FileName=Seat.cpp
+=======
+[Unit5]
+FileName=FlightTicket.cpp
+>>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 CompileCpp=1
 Folder=
 Compile=1
@@ -100,8 +109,13 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+<<<<<<< HEAD
 [Unit8]
 FileName=Customer.h
+=======
+[Unit6]
+FileName=ReservationController.h
+>>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 CompileCpp=1
 Folder=
 Compile=1
@@ -110,8 +124,13 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+<<<<<<< HEAD
 [Unit9]
 FileName=Customer.cpp
+=======
+[Unit7]
+FileName=ReservationController.cpp
+>>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 CompileCpp=1
 Folder=
 Compile=1
@@ -120,8 +139,13 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+<<<<<<< HEAD
 [Unit10]
 FileName=Flight.h
+=======
+[Unit8]
+FileName=Seat.h
+>>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 CompileCpp=1
 Folder=
 Compile=1
@@ -130,8 +154,13 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+<<<<<<< HEAD
 [Unit11]
 FileName=Flight.cpp
+=======
+[Unit9]
+FileName=Seat.cpp
+>>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 CompileCpp=1
 Folder=
 Compile=1
@@ -140,8 +169,13 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+<<<<<<< HEAD
 [Unit12]
 FileName=ReservationCustomer.h
+=======
+[Unit10]
+FileName=Customer.h
+>>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 CompileCpp=1
 Folder=
 Compile=1
@@ -150,8 +184,13 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+<<<<<<< HEAD
 [Unit13]
 FileName=ReservationCustomer.cpp
+=======
+[Unit11]
+FileName=Customer.cpp
+>>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 CompileCpp=1
 Folder=
 Compile=1
@@ -160,8 +199,13 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+<<<<<<< HEAD
 [Unit14]
 FileName=ReservationCustomer.h
+=======
+[Unit12]
+FileName=Flight.h
+>>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 CompileCpp=1
 Folder=
 Compile=1
@@ -170,8 +214,13 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+<<<<<<< HEAD
 [Unit15]
 FileName=ReservationCustomer.cpp
+=======
+[Unit13]
+FileName=Flight.cpp
+>>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 CompileCpp=1
 Folder=
 Compile=1
@@ -180,8 +229,13 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+<<<<<<< HEAD
 [Unit16]
 FileName=ReservationCustomer.cpp
+=======
+[Unit14]
+FileName=ReservationCustomer.h
+>>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 CompileCpp=1
 Folder=
 Compile=1
@@ -190,8 +244,13 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+<<<<<<< HEAD
 [Unit4]
 FileName=ReservationController.h
+=======
+[Unit15]
+FileName=ReservationCustomer.cpp
+>>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 CompileCpp=1
 Folder=
 Compile=1
@@ -202,6 +261,16 @@ BuildCmd=
 
 [Unit5]
 FileName=ReservationController.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit4]
+FileName=FlightTicket.h
 CompileCpp=1
 Folder=
 Compile=1

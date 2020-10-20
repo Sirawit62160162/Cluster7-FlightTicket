@@ -8,6 +8,7 @@ void Customer::saveRegister(string firstname,string lastname,string passportId,s
 }
 
 bool Customer::checkLogin(string username,string password){
+<<<<<<< HEAD
 	ifstream readFile;
 	readFile.open("DataBased\\CustomerData.txt",ios::in);
 	string str,fname,lname,ppId,user,pass;
@@ -27,6 +28,28 @@ bool Customer::checkLogin(string username,string password){
 			return 1;
 	}
 	return 0;
+=======
+		string f,l,p,u,pass;
+		string filein;
+		ifstream data;
+		data.open("DataBased\\CustomerData",ios::in);
+		while (getline(data,filein)){
+			f = filein.substr(0,filein.find(','));
+	   			filein.erase(0,filein.find(',')+1);
+			l = filein.substr(0,filein.find(','));	
+				filein.erase(0,filein.find(',')+1);	
+			p = filein.substr(0,filein.find(','));
+				filein.erase(0,filein.find(',')+1);	
+			u = filein.substr(0,filein.find(','));
+				filein.erase(0,filein.find(',')+1);	
+			pass = filein.substr(0,filein.find(','));
+				filein.erase(0,filein.find(',')+1);	
+			if(u == username && pass == password){
+				return true;
+			}
+		}
+			return false;
+>>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 }
 
 Customer Customer::getCustomerInformasion(){

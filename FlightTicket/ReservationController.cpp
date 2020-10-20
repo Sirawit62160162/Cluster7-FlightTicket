@@ -8,7 +8,14 @@ void ReservationController::Register(string firstname,string lastname,string pas
 
 bool ReservationController::login(string username,string password){
 	Customer *login = new Customer();
+<<<<<<< HEAD
 	return login->checkLogin(username,password);
+=======
+	int status;
+	status = login->checkLogin(username,password);
+	delete login;
+	return status;
+>>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 }
 
 void ReservationController::reserveTicket( string flightCode ){
