@@ -6,3 +6,11 @@ void Customer::saveRegister(string firstname,string lastname,string passportId,s
 	regis << firstname << "," << lastname << "," << passportId << "," << username << "," << password << endl;
 	regis.close();
 }
+
+bool Customer::checkLogin(string username,string password){
+	
+}
+
+Customer Customer::getCustomerInformasion(){
+	
+}
