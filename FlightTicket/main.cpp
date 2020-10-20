@@ -7,7 +7,6 @@ int main(int argc, char** argv) {
 	string firstName,lastName,ppId,username,password;
 	
 	UI *test = new UI();
-	
 	do{
 		MainMenu :
 			system("cls");
