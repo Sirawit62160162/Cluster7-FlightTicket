@@ -1,7 +1,12 @@
 #ifndef SEAT_H
 #define SEAT_H
-#include"FlightTicket.h"
-
+#include<string>
+#include<iostream>
+#include<iomanip>
+#include<sstream>
+#include<fstream>
+#include<cmath>
+using namespace std;
 class Seat
 {
 	private:

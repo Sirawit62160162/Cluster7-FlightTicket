@@ -1,8 +1,13 @@
 #ifndef FLIGHT_H
 #define FLIGHT_H
-#include"FlightTicket.h"
+#include<string>
+#include<iostream>
+#include<iomanip>
+#include<sstream>
+#include<fstream>
+#include<cmath>
 #include"Seat.h"
-class Flight
+using namespace std;class Flight
 {
 	private:
 		string start;
@@ -16,7 +21,7 @@ class Flight
 		Flight reserveTicket(string flightCode);
 		void getSeat(string flightCode);
 		void getFlight();
-		bool removeFlight(string flightCode);
+		void removeFlight(string flightCode);
 		void addFlight(string start,string destination,string departureTime,string arriveTime,double price,string flightCode);
 };
 

@@ -1,6 +1,12 @@
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
-#include"FlightTicket.h"
+#include<string>
+#include<iostream>
+#include<iomanip>
+#include<sstream>
+#include<fstream>
+#include<cmath>
+using namespace std;
 
 class Customer
 {	

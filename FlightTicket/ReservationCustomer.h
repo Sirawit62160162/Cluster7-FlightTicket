@@ -1,9 +1,15 @@
 #ifndef RESERVATIONCUSTOMER_H
 #define RESERVATIONCUSTOMER_H
-#include"FlightTicket.h"
-#include"Customer.h"
+#include<string>
+#include<iostream>
+#include<iomanip>
+#include<sstream>
+#include<fstream>
+#include<cmath>
 #include"Flight.h"
+#include"Customer.h"
 #include"Seat.h"
+using namespace std;
 
 class ReservationCustomer
 {

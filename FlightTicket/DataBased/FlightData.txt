@@ -1,0 +1,4 @@
+phuket,bangkok,12.00,15.00,150,12
+phuket,bangkok,12.00,15.00,150,14
+phuket,bangkok,12.00,15.00,150,15
+phuket,bangkok,12.00,15.00,150,16
