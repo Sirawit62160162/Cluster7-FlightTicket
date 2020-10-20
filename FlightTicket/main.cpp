@@ -6,7 +6,7 @@ int main(int argc, char** argv) {
 	int choose;
 	string firstName,lastName,ppId,username,password;
 	
-	UI *test = new UI();
+	UI *interface = new UI();
 	do{
 		MainMenu :
 			system("cls");
@@ -30,7 +30,11 @@ int main(int argc, char** argv) {
 								cin >> choose;
 								switch(choose){
 									case 1 :{
-										//test->login();
+										cout << "Enter Username : ";
+										cin >> username;
+										cout << "Enter Password : ";
+										cin >> password; 
+										interface->login(username,password);
 										break;
 									}//Login
 									case 2 :{
@@ -45,7 +49,7 @@ int main(int argc, char** argv) {
 										cout << "Enter Password : ";
 										cin >> password; 
 										
-										test->Register(firstName,lastName,ppId,username,password);
+										interface->Register(firstName,lastName,ppId,username,password);
 										goto Customer;
 									}//Register
 									case 3 : goto MainMenu; 
@@ -57,7 +61,7 @@ int main(int argc, char** argv) {
 				}//Employee
 				case 3 :{
 					return 0;
-					delete test;
+					delete interface;
 				}//Exit
 				default : goto MainMenu;
 			}//switch Pre-Main Menu
