@@ -15,7 +15,8 @@ class Seat
 	public:
 		void showSeat(string flightCode);
 		Seat reserveSeat(string seatId,string flightCode);
-		void changeStatus(string flightCode,string seatId);
+		void changeStatusCancel(string flightCode,string seatId);
+		void changeStatusCheckin(string flightCode,string seatId);
 		string getseatId();
 		string getstatus();
 		void addseat(string flightCode);

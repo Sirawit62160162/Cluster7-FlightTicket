@@ -196,7 +196,8 @@ int main(int argc, char** argv) {
 									cout << "======== Check-In Flight ========" << endl;
 									cout << "Enter FlightCode : ";
 									cin >> ticketcode;
-									//interface->checkin();		
+									interface->checkin(ticketcode);		
+									break;
 							}
 							case 5 :{
 									cout << endl;

@@ -85,7 +85,8 @@ bool UI::addFlight(string start,string destination,string departureTime,string a
 }
 
 bool UI::checkin(string ticketId){
-	
+	ReservationController *checkin = new ReservationController();
+    checkin->checkin(ticketId);
 	
 }
 	

@@ -1,4 +1,4 @@
-12,Reserved,Reserved,Reserved,avalable,Reserved,Reserved,Reserved,avalable,avalable,avalable,
+12,Reserved,Reserved,Reserved,not avalable,Reserved,Reserved,Reserved,Reserved,avalable,avalable,
 14,Reserved,Reserved,Reserved,avalable,avalable,avalable,avalable,avalable,avalable,avalable,
 15,Reserved,avalable,avalable,avalable,avalable,avalable,avalable,avalable,avalable,avalable,
 16,avalable,avalable,avalable,avalable,avalable,avalable,avalable,avalable,avalable,avalable,

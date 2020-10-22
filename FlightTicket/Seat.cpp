@@ -136,7 +136,7 @@ Seat Seat::reserveSeat(string Id,string flightCode){
 	writeFile.close();
 	return se;
 }
-void Seat::changeStatus(string flightCode,string id){
+void Seat::changeStatusCancel(string flightCode,string id){
 	ifstream readFile;
 	string str;
 	readFile.open("DataBased\\seat.txt",ios::in);
@@ -196,6 +196,79 @@ void Seat::changeStatus(string flightCode,string id){
 				s9[i]= "avalable";
 			}else if("10" == id){
 				s10[i]= "avalable";
+			}
+		}
+	}
+	ofstream writeFile;
+	writeFile.open("DataBased\\seat.txt",ios::out);
+	for(int i=0;i<k;i++){
+		writeFile <<flight[i]<<","<<s1[i]<<","<<s2[i]<<","<<s3[i]<<","<<s4[i]<<","<<s5[i]<<",";
+		writeFile <<s6[i]<<","<<s7[i]<<","<<s8[i]<<","<<s9[i]<<","<<s10[i]<<","<<endl;
+		}	
+	writeFile.close();
+
+}
+void Seat::changeStatusCheckin(string flightCode,string id){
+	
+	ifstream readFile;
+	string str;
+	readFile.open("DataBased\\seat.txt",ios::in);
+	int k=0;
+	while(getline(readFile,str)){
+		k++;
+	}
+	readFile.close();
+	string flight[k],filein,s1[k],s2[k],s3[k],s4[k],s5[k],s6[k],s7[k],s8[k],s9[k],s10[k];
+	int i=0;
+	readFile.open("DataBased\\seat.txt",ios::in);
+	while(getline(readFile,filein)){
+		flight[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s1[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s2[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s3[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s4[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s5[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s6[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s7[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s8[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s9[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s10[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		i++;
+	}
+	readFile.close();
+	for(int i=0;i<k;i++){
+		if(flight[i]== flightCode){
+			if("1" == id){
+				s1[i]= "not avalable";
+			}else if("2" == id){
+				s2[i]= "not avalable";
+			}else if("3" == id){
+				s3[i]= "not avalable";
+			}else if("4" == id){
+				s4[i]= "not avalable";
+			}else if("5" == id){
+				s5[i]= "not avalable";
+			}else if("6" == id){
+				s6[i]= "not avalable";
+			}else if("7" == id){
+				s7[i]= "not avalable";
+			}else if("8" == id){
+				s8[i]= "not avalable";
+			}else if("9" == id){
+				s9[i]= "not avalable";
+			}else if("10" == id){
+				s10[i]= "not avalable";
 			}
 		}
 	}
