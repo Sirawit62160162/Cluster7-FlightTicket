@@ -70,7 +70,8 @@ bool UI::cancelTicketId(string ticketId){
 }
 
 void UI::showCustomer(){
-
+    	ReservationController *show = new ReservationController();
+    	show->showCustomer();
 }
 	
 bool UI::deleteFlight(string flightCode){

@@ -57,7 +57,8 @@ bool ReservationController::cancelTicketid(string ticketId){
 }
 
 void ReservationController::showCustomer(){
-	
+		ReservationCustomer *show = new ReservationCustomer();
+		show->showCustomer();
 }
 
 bool ReservationController::deleteFlight(string flightCode){
