@@ -1,39 +1,52 @@
 #include "UI.h"
-<<<<<<< HEAD
+
 
 bool UI::Register(string firstname,string lastname,string passportId,string username,string password){
-=======
-int UI::test(){
-	int i =6;
-	return i;
-}
-void UI::Register(string firstname,string lastname,string passportId,string username,string password){
->>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 	ReservationController *regis = new ReservationController();
 	regis->Register(firstname,lastname,passportId,username,password);
 	delete regis;
 	return true;
 }
 bool UI::login(string username,string password){
-<<<<<<< HEAD
 	ReservationController *log = new ReservationController();
+	customer = log->getCustomerinformation(username,password);
+	//show
+		cout << "=========================================" << endl;
+		cout << customer.getFirstname() << " "<< customer.getLastname() <<" "<< customer.getPassportId() << endl;
+	    cout << "=========================================" << endl;
+		
 	return log->login(username,password);
-=======
-	ReservationController *login = new  ReservationController();
-	int status;
-	status = login->login(username,password);
-	delete login;
-	return status;
-	
->>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
+	delete log;
 }
-void UI::reserveTicket(string flightCode ){
-	
+void UI::reserveTicket(string flightCode){
+	ReservationController *reflight = new ReservationController();
+	flight = reflight->reserveTicket(flightCode);
+	//show
+		cout << "=============================================================" << endl;
+		cout <<  " " << flight.getStart() << " --> " << setw(12) << flight.getdestination() <<" | "; 
+		cout <<  flight.getdepartureTime() << "-" << flight.getarriveTime() << " | "; 
+		cout <<  setw(5) << flight.getprice() << "Bath | " << flight.getFlightCode() << endl;
+		cout << "=============================================================" << endl;
+	//
+	reflight->getSeat(flightCode);
+	delete reflight;
 }
-void UI::reserveSeat(string seatId){
-	
+void UI::reserveSeat(string seatId,string flightCode,int check){
+	string ticketId;
+	ReservationController *s = new ReservationController();
+	seat = s->reserveSeat(seatId,flightCode);
+	//show 
+		cout << "==================================================" << endl;
+		cout << "Seatid : " << seat.getseatId() << endl;
+		cout << "Status : " << seat.getstatus() << endl;
+		cout << "==================================================" << endl;
+	//
+	if(check == 1){
+		ticketId = s->createTickedId(flight.getFlightCode(),seat.getseatId());
+		cout << "Ticket ID : " << ticketId << endl;
+		s->saveTicketinformation(customer,flight,seat,ticketId);
+	}
 }
-
 void UI::showFlight(){
 	ReservationController *showFlight = new ReservationController();
 	showFlight->showFlight();
@@ -60,10 +73,28 @@ bool UI::addFlight(string start,string destination,string departureTime,string a
 
 bool UI::checkin(string ticketId){
 	
+	
 }
 	
 void UI::reserveTicketName(string firstname,string lastname,string passportId){
-	
+	string ticketId;
+	ReservationController *re = new ReservationController(); 
+	customer = re->reserveTicketName(firstname,lastname,passportId);
+	cout << "=========================================" << endl;
+	cout << customer.getFirstname() << " "<< customer.getLastname() <<" "<< customer.getPassportId() << endl;
+	cout << "=========================================" << endl;
+	ticketId = re->createTickedId(flight.getFlightCode(),seat.getseatId());
+	cout << "Ticket ID : " << ticketId << endl;
+	cout << "============================ Ticket ===========================" << endl;
+	cout <<  customer.getFirstname() << " " << customer.getLastname() <<" " << customer.getPassportId() << endl;
+	cout << flight.getStart() << "->" << flight.getdestination() << " | " << flight.getdepartureTime() << "-" << flight.getarriveTime() << " | " << flight.getFlightCode() <<endl;
+	cout << endl;
+	cout << "                Seat  : " << seat.getseatId() << endl; 
+	cout << "                Price : " << flight.getprice() << " Baht" << endl;
+	cout << " Ticket Id : " << ticketId << endl;
+	cout << "===============================================================" << endl;
+	re->saveTicketinformation(customer,flight,seat,ticketId);
 }
+
 
 

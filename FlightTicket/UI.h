@@ -7,21 +7,20 @@
 #include<fstream>
 #include<cmath>
 #include"ReservationController.h"
+#include"Flight.h"
 using namespace std;
 
 class UI
 {
+	private:
+		Flight flight;
+		Seat seat;
+		Customer customer;
 	public:
-<<<<<<< HEAD
 		bool Register(string firstname,string lastname,string passportId,string username,string password);
 		bool login(string username,string password);
-=======
-		void Register(string firstname,string lastname,string passportId,string username,string password);
-		bool login(string username,string password);
-		int test();
->>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
-		void reserveTicket(string flightCode );
-		void reserveSeat(string seatId);
+		void reserveTicket(string flightCode);
+		void reserveSeat(string seatId,string flightCode,int check);
 		void showFlight();
 		bool cancelTicketld(string ticketId);
 		void showCustomer();

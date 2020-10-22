@@ -8,6 +8,7 @@
 #include<cmath>
 #include"Customer.h"
 #include"Flight.h"
+#include"ReservationCustomer.h"
 using namespace std;
 
 class ReservationController
@@ -15,19 +16,19 @@ class ReservationController
 	public:
     	void Register(string firstname,string lastname,string passportId,string username,string password);
 		bool login(string username,string password);
-		void reserveTicket( string flightCode );
+		Flight reserveTicket(string flightCode );
 		void getSeat(string flightCode);  
-		void reserveSeat(string seatId);
-    	void getCustomerinformation();
-		void createTickedid();
-		void showTicketinformation();
+		Seat reserveSeat(string seatId,string flightCode);
+    	Customer getCustomerinformation(string username,string password);
+		string createTickedId(string filght,string seatid);
+		void saveTicketinformation(Customer customer,Flight flight,Seat seat,string ticketid);
 		void showFlight();
 		bool cancelTicketid(string ticketId);
 		void showCustomer();
-		void deleteFlight(string flightCode);
+		bool deleteFlight(string flightCode);
 		void addFlight(string start,string destination,string departureTime,string arriveTime,double price,string flightCode);
 		bool checkin(string ticketId);
-		void reserveTicketName(string firstname,string lastname,string passportId); 
+		Customer reserveTicketName(string firstname,string lastname,string passportId); 
 };
 
 #endif

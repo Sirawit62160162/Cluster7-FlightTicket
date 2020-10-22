@@ -1,5 +1,4 @@
 #include "ReservationController.h"
-
 void ReservationController::Register(string firstname,string lastname,string passportId,string username,string password){
 	Customer *regis = new Customer();
 	regis->saveRegister(firstname,lastname,passportId,username,password);
@@ -8,40 +7,41 @@ void ReservationController::Register(string firstname,string lastname,string pas
 
 bool ReservationController::login(string username,string password){
 	Customer *login = new Customer();
-<<<<<<< HEAD
 	return login->checkLogin(username,password);
-=======
-	int status;
-	status = login->checkLogin(username,password);
-	delete login;
-	return status;
->>>>>>> 7adaa883c8ca5164ddc77a97c85a8e8ce878e67d
 }
 
-void ReservationController::reserveTicket( string flightCode ){
-	
+Flight ReservationController::reserveTicket(string flightCode){
+	ReservationCustomer reflight;
+	return reflight.reserveTicket(flightCode);
 }
 	
-void ReservationController::getSeat(string flightCode){
-	
+void ReservationController::getSeat(string f){
+     Flight *seat = new Flight();
+	 return seat->getSeat(f);
 }
 	
-void ReservationController::reserveSeat(string seatId){
+Seat ReservationController::reserveSeat(string seatId,string flightCode){
+	ReservationCustomer *seat = new ReservationCustomer;
+	return seat->reserveSeat(seatId,flightCode);
+}
+	
+Customer ReservationController::getCustomerinformation(string user,string pass){
+	ReservationCustomer *c = new ReservationCustomer;
+	return c->getCustomerInformation(user,pass);
+}
 
+string ReservationController::createTickedId(string f,string s){
+	string ticket;
+	ReservationCustomer *id = new ReservationCustomer();
+	ticket = id->createTicketId(f,s);
+	return ticket;
 }
 	
-void ReservationController::getCustomerinformation(){
+void ReservationController::saveTicketinformation(Customer customer,Flight flight,Seat seat,string id){
+	ReservationCustomer *c = new ReservationCustomer;
+	c->saveTicketInformation(customer,flight,seat,id);
 	
 }
-
-void ReservationController::createTickedid(){
-	
-}
-	
-void ReservationController::showTicketinformation(){
-	
-}
-	
 void ReservationController::showFlight(){
 	Flight *showFlight = new Flight();
 	showFlight->getFlight();
@@ -55,7 +55,7 @@ void ReservationController::showCustomer(){
 	
 }
 
-void ReservationController::deleteFlight(string flightCode){
+bool ReservationController::deleteFlight(string flightCode){
 	Flight *deleteFlight = new Flight();
 	return 	deleteFlight->removeFlight(flightCode);
 }
@@ -70,7 +70,8 @@ bool ReservationController::checkin(string ticketId){
 	
 }
 
-void ReservationController::reserveTicketName(string firstname,string lastname,string passportId){
-	
-}
+Customer ReservationController::reserveTicketName(string firstname,string lastname,string passportId){
+	ReservationCustomer *c = new ReservationCustomer();
+	return c->reserveTicketName(firstname,lastname,passportId);
+ }
 

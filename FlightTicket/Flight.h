@@ -16,13 +16,20 @@ using namespace std;class Flight
 		string arriveTime;
 		string flightCode;
 		double price;
-		Seat seats[10];
+		Seat seats;
 	public:
 		Flight reserveTicket(string flightCode);
-		void getSeat(string flightCode);
+		void getSeat(string f);
 		void getFlight();
-		void removeFlight(string flightCode);
+		bool removeFlight(string flightCode);
 		void addFlight(string start,string destination,string departureTime,string arriveTime,double price,string flightCode);
+		string getStart();
+		string getdestination();
+		string getdepartureTime();
+		string getarriveTime();
+		double getprice();
+		string getFlightCode();
+		
 };
 
 #endif

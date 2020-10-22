@@ -17,19 +17,19 @@ class ReservationCustomer
 		Customer informationCustomer;
 		Flight informationFlight;
 		Seat informationSeat;
-		string tickeId;
+		string ticketId;
 	public:
-		void reserveTicket(string flightCode);
-		void reserveSeat(string seatId);
-		void getCustomerInformation();
-		void createTicketId();
-		ReservationCustomer showTicketInformation();
+		Flight reserveTicket(string flightCode);
+		Seat reserveSeat(string seatId,string flightCode);
+		Customer getCustomerInformation(string username,string password);
+		string createTicketId(string flight,string seat);
+		void saveTicketInformation(Customer customer,Flight flight,Seat seat,string);
 		bool cancelTickrtId();
 		void setStatus(string status);
 		void showCustomer();
 		bool checkinTicketId(string ticketId);
-		void reserveTicketName(string firstname,string lastname,string passportId);
-		void creatTicketId();
+		Customer reserveTicketName(string firstname,string lastname,string passportId);
+		string getTicketId();
 };
 
 #endif

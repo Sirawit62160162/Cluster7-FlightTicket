@@ -19,7 +19,11 @@ class Customer
 	public:
 		void saveRegister(string firstname,string lastname,string passportId,string username,string password);
 		bool checkLogin(string username,string password);
-		Customer getCustomerInformasion();
+		Customer getCustomerInformasion(string username,string pass);
+		string getFirstname();
+		string getLastname();
+		string getPassportId();
+		void setReserveName(string f,string l,string p);
 };
 
 #endif

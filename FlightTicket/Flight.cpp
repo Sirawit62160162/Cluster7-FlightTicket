@@ -1,9 +1,43 @@
 #include "Flight.h"
-Flight Flight::reserveTicket(string flightCode){
-	
-	
+Flight Flight::reserveTicket(string fc){
+	Flight F;
+	int i = 1;
+	string filein;
+	stringstream ss;
+	ifstream data;
+	data.open("DataBased\\FlightData.txt",ios::in);
+	string st,des,dep,arr,p,code;
+	while(getline(data,filein)){
+		st = filein.substr(0,filein.find(','));
+		   	filein.erase(0,filein.find(',')+1);
+		des = filein.substr(0,filein.find(','));
+			filein.erase(0,filein.find(',')+1);	
+		dep = filein.substr(0,filein.find(','));
+			filein.erase(0,filein.find(',')+1);	
+		arr = filein.substr(0,filein.find(','));
+			filein.erase(0,filein.find(',')+1);	
+		p = filein.substr(0,filein.find(','));
+			filein.erase(0,filein.find(',')+1);	
+		code = filein.substr(0,filein.find(','));
+			filein.erase(0,filein.find(',')+1);
+		ss << p;
+		ss >> price;
+		ss.clear();
+		if(fc == code){
+			F.start = st;
+			F.destination = des;
+			F.departureTime = dep;
+			F.arriveTime = arr;
+			F.price = price;
+			F.flightCode = code;
+			//save file
+			return F;
+		}
+	}//return "not found";	
 }
-void Flight::getSeat(string flightCode){
+void Flight::getSeat(string f){
+     Seat *s = new Seat();
+     s->showSeat(f);
 	
 }
 void Flight::getFlight(){
@@ -24,7 +58,6 @@ void Flight::getFlight(){
 	while(getline(showFlight,str)){
 		stringstream ss;
 		ss << num;
-		
 		st = str.substr(0,str.find(','));
 		str.erase(0,str.find(',')+1);
 		des = str.substr(0,str.find(','));
@@ -51,7 +84,8 @@ void Flight::getFlight(){
 	}
 	cout << "==========================================================================================================================" << endl;
 }
-void Flight::removeFlight(string flightCode){
+bool Flight::removeFlight(string flightCode){
+	int check;
 	ifstream readFile;
 	string str;
 	readFile.open("DataBased\\FlightData.txt",ios::in);
@@ -87,16 +121,40 @@ void Flight::removeFlight(string flightCode){
 		cout << st[i] << " " << des[i] << " " << dep[i] << " " << arr[i] << " " << p[i] << " " << code[i] << endl;
 		if(code[i] == flightCode){
 			continue;
+			check = 1;
 		}else{
 			writeFile << st[i] << "," << des[i] << "," << dep[i] << "," << arr[i] << "," << p[i] << "," << code[i] << endl;
 		}
 	}
 	writeFile.close();
+	if(check == 1){
+		return true;
+	}else{
+		return false;
+	}
 }
 void Flight::addFlight(string start,string destination,string departureTime,string arriveTime,double price,string flightCode){
 	ofstream addFlight;
 	addFlight.open("DataBased\\FlightData.txt",ios::app);
 	addFlight << start << "," << destination << "," << departureTime << "," << arriveTime << "," << price << "," << flightCode << endl;
 	addFlight.close();
+}
+string Flight::getStart(){
+	return start;
+}
+string Flight::getdestination(){
+	return destination;
+}
+string Flight::getdepartureTime(){
+	return departureTime;
+}
+string Flight::getarriveTime(){
+	return arriveTime;
+}
+double Flight::getprice(){
+	return price;
+}
+string Flight::getFlightCode(){
+	return flightCode;
 }
 
