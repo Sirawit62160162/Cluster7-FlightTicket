@@ -55,6 +55,7 @@ int main(int argc, char** argv) {
 										cin >> password; 								
 										if(interface->login(username,password) == true){
 											cout << "** Login Success **" << endl;
+											showFlightCustomer:
 											interface->showFlight();
 											cout << endl;
 											cout << "Enter FlightCode : ";
@@ -62,7 +63,11 @@ int main(int argc, char** argv) {
 											interface->reserveTicket(flightCode);
 											cout << "Enter : ";
 											cin >> numseat;
-											interface->reserveSeat(numseat,flightCode,checkcustomer);
+											if(interface->reserveSeat(numseat,flightCode,checkcustomer)==0){
+												goto showFlightCustomer;
+											}else{
+												interface->reserveSeat(numseat,flightCode,checkcustomer);
+											}
 											goto Customer;
 										}else{
 											cout << "** Login Failed **" << endl;
@@ -111,6 +116,7 @@ int main(int argc, char** argv) {
 						switch(choose){
 							case 1 :{
 								ReserveFlight :
+								showFlightEmployee:
 								interface->showFlight();
 								cout << endl;
 								cout << "Enter FlightCode : ";
@@ -118,7 +124,11 @@ int main(int argc, char** argv) {
 								interface->reserveTicket(flightCode);
 								cout << "Enter : ";
 								cin >> numseat;
-								interface->reserveSeat(numseat,flightCode,checkcustomer);
+								if(interface->reserveSeat(numseat,flightCode,checkcustomer)==0){
+									goto showFlightEmployee;
+								}else{
+									interface->reserveSeat(numseat,flightCode,checkcustomer);
+								}
 								cout << "Enter Firstname : ";
 								cin >> firstName;
 								cout << "Enter Lastname : ";

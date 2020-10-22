@@ -28,7 +28,8 @@ class ReservationController
 		bool deleteFlight(string flightCode);
 		void addFlight(string start,string destination,string departureTime,string arriveTime,double price,string flightCode);
 		bool checkin(string ticketId);
-		Customer reserveTicketName(string firstname,string lastname,string passportId); 
+		Customer reserveTicketName(string firstname,string lastname,string passportId);
+		bool checkseat(string flightCode,string seatid); 
 };
 
 #endif

@@ -138,6 +138,8 @@ void Flight::addFlight(string start,string destination,string departureTime,stri
 	addFlight.open("DataBased\\FlightData.txt",ios::app);
 	addFlight << start << "," << destination << "," << departureTime << "," << arriveTime << "," << price << "," << flightCode << endl;
 	addFlight.close();
+	Seat *s = new Seat();
+	s->addseat(flightCode);
 }
 string Flight::getStart(){
 	return start;

@@ -18,6 +18,8 @@ class Seat
 		void changeStatus(string flightCode,string seatId);
 		string getseatId();
 		string getstatus();
+		void addseat(string flightCode);
+		bool checkseat(string flightCode,string seatId);
 };
 
 #endif

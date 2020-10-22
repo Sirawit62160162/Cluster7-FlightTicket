@@ -1,6 +1,4 @@
 #include "UI.h"
-
-
 bool UI::Register(string firstname,string lastname,string passportId,string username,string password){
 	ReservationController *regis = new ReservationController();
 	regis->Register(firstname,lastname,passportId,username,password);
@@ -31,9 +29,14 @@ void UI::reserveTicket(string flightCode){
 	reflight->getSeat(flightCode);
 	delete reflight;
 }
-void UI::reserveSeat(string seatId,string flightCode,int check){
+bool UI::reserveSeat(string seatId,string flightCode,int check){
 	string ticketId;
 	ReservationController *s = new ReservationController();
+	if(s->checkseat(flightCode,seatId) == 0){
+		return false;
+	}else{
+		seat = s->reserveSeat(seatId,flightCode);
+	}
 	seat = s->reserveSeat(seatId,flightCode);
 	//show 
 		cout << "==================================================" << endl;
@@ -44,8 +47,17 @@ void UI::reserveSeat(string seatId,string flightCode,int check){
 	if(check == 1){
 		ticketId = s->createTickedId(flight.getFlightCode(),seat.getseatId());
 		cout << "Ticket ID : " << ticketId << endl;
+		cout << "============================ Ticket ===========================" << endl;
+		cout <<  customer.getFirstname() << " " << customer.getLastname() <<" " << customer.getPassportId() << endl;
+		cout << flight.getStart() << "->" << flight.getdestination() << " | " << flight.getdepartureTime() << "-" << flight.getarriveTime() << " | " << flight.getFlightCode() <<endl;
+		cout << endl;
+		cout << "                Seat  : " << seat.getseatId() << endl; 
+		cout << "                Price : " << flight.getprice() << " Baht" << endl;
+		cout << " Ticket Id : " << ticketId << endl;
+		cout << "===============================================================" << endl;
 		s->saveTicketinformation(customer,flight,seat,ticketId);
-	}
+	}//check customer or employee
+	return true;
 }
 void UI::showFlight(){
 	ReservationController *showFlight = new ReservationController();

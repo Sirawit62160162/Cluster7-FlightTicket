@@ -78,5 +78,10 @@ bool ReservationController::checkin(string ticketId){
 Customer ReservationController::reserveTicketName(string firstname,string lastname,string passportId){
 	ReservationCustomer *c = new ReservationCustomer();
 	return c->reserveTicketName(firstname,lastname,passportId);
- }
+}
+bool ReservationController::checkseat(string flightCode,string seatid){
+	Seat *s = new Seat();
+	return s->checkseat(flightCode,seatid);
+	
+} 
 
