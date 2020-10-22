@@ -38,7 +38,7 @@ string ReservationController::createTickedId(string f,string s){
 }
 	
 void ReservationController::saveTicketinformation(Customer customer,Flight flight,Seat seat,string id){
-	ReservationCustomer *c = new ReservationCustomer;
+	ReservationCustomer *c = new ReservationCustomer();
 	c->saveTicketInformation(customer,flight,seat,id);
 	
 }
@@ -48,7 +48,12 @@ void ReservationController::showFlight(){
 }
 
 bool ReservationController::cancelTicketid(string ticketId){
-	
+	string cancel = "Cancel";
+	ReservationCustomer *Can = new ReservationCustomer();
+	if(Can->cancelTicketId(ticketId)==1){
+		Can->cancelTicketId(ticketId);
+		Can->setStatus(cancel,ticketId);
+	}
 }
 
 void ReservationController::showCustomer(){

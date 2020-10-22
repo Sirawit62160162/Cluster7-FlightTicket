@@ -22,7 +22,7 @@ class UI
 		void reserveTicket(string flightCode);
 		void reserveSeat(string seatId,string flightCode,int check);
 		void showFlight();
-		bool cancelTicketld(string ticketId);
+		bool cancelTicketId(string ticketId);
 		void showCustomer();
 		bool deleteFlight(string flightCode);
 		bool addFlight(string start,string destination,string departureTime,string arriveTime,double price,string flightCode);

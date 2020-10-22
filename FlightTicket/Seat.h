@@ -15,7 +15,7 @@ class Seat
 	public:
 		void showSeat(string flightCode);
 		Seat reserveSeat(string seatId,string flightCode);
-		void changeStatus(string seatId,string status);
+		void changeStatus(string flightCode,string seatId);
 		string getseatId();
 		string getstatus();
 };

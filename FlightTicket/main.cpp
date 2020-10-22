@@ -16,6 +16,7 @@ int main(int argc, char** argv) {
 	int choose;
 	int check;
 	int checkcustomer;
+	string ticketcode;
 	string firstName,lastName,ppId,username,password;
 	string start,destination,departTime,arriveTime,flightCode;
 	string numseat;
@@ -184,15 +185,16 @@ int main(int argc, char** argv) {
 									cout << endl;
 									cout << "======== Check-In Flight ========" << endl;
 									cout << "Enter FlightCode : ";
-									cin >> flightCode;
+									cin >> ticketcode;
 									//interface->checkin();		
 							}
 							case 5 :{
 									cout << endl;
 									cout << "======== Cancel Flight ========" << endl;
 									cout << "Enter FlightCode : ";
-									cin >> flightCode;
-									//interface->cancelTicketld();
+									cin >> ticketcode;
+									interface->cancelTicketId(ticketcode);
+									break;
 							}
 							case 6 : goto MainMenu;
 							default : goto Employee;

@@ -52,8 +52,9 @@ void UI::showFlight(){
 	showFlight->showFlight();
 }
 
-bool UI::cancelTicketld(string ticketId){
-	
+bool UI::cancelTicketId(string ticketId){
+	ReservationController *cancelTicketId = new ReservationController();
+    cancelTicketId->cancelTicketid(ticketId);
 }
 
 void UI::showCustomer(){

@@ -24,8 +24,8 @@ class ReservationCustomer
 		Customer getCustomerInformation(string username,string password);
 		string createTicketId(string flight,string seat);
 		void saveTicketInformation(Customer customer,Flight flight,Seat seat,string);
-		bool cancelTickrtId();
-		void setStatus(string status);
+		bool cancelTicketId(string ticketcode);
+		void setStatus(string status,string ticketid);
 		void showCustomer();
 		bool checkinTicketId(string ticketId);
 		Customer reserveTicketName(string firstname,string lastname,string passportId);
