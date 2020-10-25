@@ -66,12 +66,16 @@ bool ReservationCustomer::cancelTicketId(string ticketcode){
 				str.erase(0,str.find(',')+1);	
 			Ticketcheck = str.substr(0,str.find(','));
 				str.erase(0,str.find(',')+1);
-			if( ticketcode == Ticketcheck){
-				S->changeStatusCancel(flightCode,seatId);
-				return true;
-			}		
+			if(ticketcode == Ticketcheck){
+				if(S->changeStatusCancel(flightCode,seatId)== 0){
+					return false;
+				}else{
+					S->changeStatusCancel(flightCode,seatId);
+					return true;
+				}
+			}
 	}
-	
+	return false;
 }
 
 void ReservationCustomer::setStatusCancel(string s,string ticketid){
@@ -79,6 +83,7 @@ void ReservationCustomer::setStatusCancel(string s,string ticketid){
 	ifstream readFile;
 	int k=0;
 	readFile.open("DataBased\\ReserveCustomer.txt",ios::in);
+//if(ticketcode==ticketid)
 	while(getline(readFile,str)){
 		k++;
 	}
@@ -116,10 +121,11 @@ void ReservationCustomer::setStatusCancel(string s,string ticketid){
 	for(int i=0;i<k;i++){
 		if(Ticketcheck[i] == ticketid){
 			status[i] = s;
+			
 		}
 	}
 	ofstream write;
-	write.open("DataBased\\ReserveCustomer.txt",ios::app);
+	write.open("DataBased\\ReserveCustomer.txt",ios::out);
 	for(int i=0;i<k;i++){
 		write << name[i] <<","<< lname[i] << "," << passId[i] << "," 
 		<< start[i] << "," << destination[i] << "," <<tStart[i]<< ","<< tDestination[i] << ","<< price[i] << "," << flightCode[i] << "," 
@@ -172,7 +178,7 @@ void ReservationCustomer::setStatusCheckin(string s,string ticketid){
 		}
 	}
 	ofstream write;
-	write.open("DataBased\\ReserveCustomer.txt",ios::app);
+	write.open("DataBased\\ReserveCustomer.txt",ios::out);
 	for(int i=0;i<k;i++){
 		write << name[i] <<","<< lname[i] << "," << passId[i] << "," 
 		<< start[i] << "," << destination[i] << "," <<tStart[i]<< ","<< tDestination[i] << ","<< price[i] << "," << flightCode[i] << "," 
@@ -260,14 +266,17 @@ bool ReservationCustomer::checkinTicketId(string ticketcode){
 				str.erase(0,str.find(',')+1);	
 			Ticketcheck = str.substr(0,str.find(','));
 				str.erase(0,str.find(',')+1);
-			if( ticketcode == Ticketcheck){
-				S->changeStatusCheckin(flightCode,seatId);
-				return true;
+			if(ticketcode == Ticketcheck){
+				if(S->changeStatusCheckin(flightCode,seatId) == 0){
+					return false;
+				}else{
+					S->changeStatusCheckin(flightCode,seatId);
+					return true;
+				}
 			}		
 	}
-	
+	return false;	
 }
-
 Customer ReservationCustomer::reserveTicketName(string firstname,string lastname,string passportId){
 	informationCustomer.setReserveName(firstname,lastname,passportId);
 	return informationCustomer;

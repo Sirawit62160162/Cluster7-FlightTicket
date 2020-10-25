@@ -1,33 +1,45 @@
 #include "UI.h"
 bool UI::Register(string firstname,string lastname,string passportId,string username,string password){
 	ReservationController *regis = new ReservationController();
-	regis->Register(firstname,lastname,passportId,username,password);
-	delete regis;
-	return true;
+	if(regis->checkRegister(username,password)== 0){
+		return false;
+	}else{
+		regis->Register(firstname,lastname,passportId,username,password);
+		delete regis;
+		return true;
+	}
 }
 bool UI::login(string username,string password){
 	ReservationController *log = new ReservationController();
 	customer = log->getCustomerinformation(username,password);
 	//show
+	if(log->login(username,password)== 1){
 		cout << "=========================================" << endl;
 		cout << customer.getFirstname() << " "<< customer.getLastname() <<" "<< customer.getPassportId() << endl;
 	    cout << "=========================================" << endl;
-		
-	return log->login(username,password);
+	    return true;
+	}else{
+		return false;
+	}
 	delete log;
 }
-void UI::reserveTicket(string flightCode){
+bool UI::reserveTicket(string flightCode){
 	ReservationController *reflight = new ReservationController();
-	flight = reflight->reserveTicket(flightCode);
-	//show
-		cout << "=============================================================" << endl;
-		cout <<  " " << flight.getStart() << " --> " << setw(12) << flight.getdestination() <<" | "; 
-		cout <<  flight.getdepartureTime() << "-" << flight.getarriveTime() << " | "; 
-		cout <<  setw(5) << flight.getprice() << "Bath | " << flight.getFlightCode() << endl;
-		cout << "=============================================================" << endl;
-	//
-	reflight->getSeat(flightCode);
-	delete reflight;
+	if(reflight->checkFlight(flightCode) == 0){
+		return false;
+	}else{
+		flight = reflight->reserveTicket(flightCode);
+		//show
+			cout << "=============================================================" << endl;
+			cout <<  " " << flight.getStart() << " --> " << setw(12) << flight.getdestination() <<" | "; 
+			cout <<  flight.getdepartureTime() << "-" << flight.getarriveTime() << " | "; 
+			cout <<  setw(5) << flight.getprice() << "Bath | " << flight.getFlightCode() << endl;
+			cout << "=============================================================" << endl;
+		//
+		reflight->getSeat(flightCode);
+		delete reflight;
+		return true;
+	}
 }
 bool UI::reserveSeat(string seatId,string flightCode,int check){
 	string ticketId;
@@ -66,7 +78,12 @@ void UI::showFlight(){
 
 bool UI::cancelTicketId(string ticketId){
 	ReservationController *cancelTicketId = new ReservationController();
-    cancelTicketId->cancelTicketid(ticketId);
+    if(cancelTicketId->cancelTicketid(ticketId)== 0){
+    	return false;
+	}else{
+		cancelTicketId->cancelTicketid(ticketId);
+		return true;
+	}
 }
 
 void UI::showCustomer(){
@@ -87,8 +104,12 @@ bool UI::addFlight(string start,string destination,string departureTime,string a
 
 bool UI::checkin(string ticketId){
 	ReservationController *checkin = new ReservationController();
-    checkin->checkin(ticketId);
-	
+    if(checkin->checkin(ticketId)== 0){
+    	return false;
+	}else{
+		checkin->checkin(ticketId);
+		return true;
+	}
 }
 	
 void UI::reserveTicketName(string firstname,string lastname,string passportId){

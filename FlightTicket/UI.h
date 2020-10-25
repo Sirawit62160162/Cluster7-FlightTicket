@@ -19,7 +19,7 @@ class UI
 	public:
 		bool Register(string firstname,string lastname,string passportId,string username,string password);
 		bool login(string username,string password);
-		void reserveTicket(string flightCode);
+		bool reserveTicket(string flightCode);
 		bool reserveSeat(string seatId,string flightCode,int check);
 		void showFlight();
 		bool cancelTicketId(string ticketId);

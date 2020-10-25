@@ -29,6 +29,7 @@ using namespace std;class Flight
 		string getarriveTime();
 		double getprice();
 		string getFlightCode();
+		bool checkFlight(string flightCode);
 		
 };
 

@@ -136,7 +136,8 @@ Seat Seat::reserveSeat(string Id,string flightCode){
 	writeFile.close();
 	return se;
 }
-void Seat::changeStatusCancel(string flightCode,string id){
+bool Seat::changeStatusCancel(string flightCode,string id){
+	int check;
 	ifstream readFile;
 	string str;
 	readFile.open("DataBased\\seat.txt",ios::in);
@@ -176,26 +177,38 @@ void Seat::changeStatusCancel(string flightCode,string id){
 	readFile.close();
 	for(int i=0;i<k;i++){
 		if(flight[i]== flightCode){
-			if("1" == id){
+			if("1" == id && s1[i] == "Reserved"){
 				s1[i]= "avalable";
-			}else if("2" == id){
+				check = 1;
+			}else if("2" == id && s2[i] == "Reserved"){
 				s2[i]= "avalable";
-			}else if("3" == id){
+				check = 1;
+			}else if("3" == id && s3[i] == "Reserved"){
 				s3[i]= "avalable";
-			}else if("4" == id){
+				check = 1;
+			}else if("4" == id && s4[i] == "Reserved"){
 				s4[i]= "avalable";
-			}else if("5" == id){
+				check = 1;
+			}else if("5" == id && s5[i] == "Reserved"){
 				s5[i]= "avalable";
-			}else if("6" == id){
+				check = 1;
+			}else if("6" == id && s6[i] == "Reserved"){
 				s6[i]= "avalable";
-			}else if("7" == id){
+				check = 1;
+			}else if("7" == id && s7[i] == "Reserved"){
 				s7[i]= "avalable";
-			}else if("8" == id){
+				check = 1;
+			}else if("8" == id && s8[i] == "Reserved"){
 				s8[i]= "avalable";
-			}else if("9" == id){
+				check = 1;
+			}else if("9" == id && s9[i] == "Reserved"){
 				s9[i]= "avalable";
-			}else if("10" == id){
+				check = 1;
+			}else if("10" == id && s10[i] == "Reserved"){
 				s10[i]= "avalable";
+				check = 1;
+			}else{
+				check = 0;
 			}
 		}
 	}
@@ -206,10 +219,10 @@ void Seat::changeStatusCancel(string flightCode,string id){
 		writeFile <<s6[i]<<","<<s7[i]<<","<<s8[i]<<","<<s9[i]<<","<<s10[i]<<","<<endl;
 		}	
 	writeFile.close();
-
+	return check;
 }
-void Seat::changeStatusCheckin(string flightCode,string id){
-	
+bool Seat::changeStatusCheckin(string flightCode,string id){
+	int check;
 	ifstream readFile;
 	string str;
 	readFile.open("DataBased\\seat.txt",ios::in);
@@ -249,26 +262,38 @@ void Seat::changeStatusCheckin(string flightCode,string id){
 	readFile.close();
 	for(int i=0;i<k;i++){
 		if(flight[i]== flightCode){
-			if("1" == id){
-				s1[i]= "not avalable";
-			}else if("2" == id){
+			if("1" == id && s1[i] == "Reserved"){
+				s1[i] = "not avalable";
+				check = 1;
+			}else if("2" == id && s2[i] == "Reserved"){
 				s2[i]= "not avalable";
-			}else if("3" == id){
+				check = 1;
+			}else if("3" == id && s3[i] == "Reserved"){
 				s3[i]= "not avalable";
-			}else if("4" == id){
+				check = 1;
+			}else if("4" == id &&s4[i] == "Reserved"){
 				s4[i]= "not avalable";
-			}else if("5" == id){
+				check = 1;
+			}else if("5" == id &&s5[i] == "Reserved"){
 				s5[i]= "not avalable";
-			}else if("6" == id){
+				check = 1;
+			}else if("6" == id &&s6[i] == "Reserved"){
 				s6[i]= "not avalable";
-			}else if("7" == id){
+				check = 1;
+			}else if("7" == id &&s7[i] == "Reserved"){
 				s7[i]= "not avalable";
-			}else if("8" == id){
+				check = 1;
+			}else if("8" == id &&s8[i] == "Reserved"){
 				s8[i]= "not avalable";
-			}else if("9" == id){
+				check = 1;
+			}else if("9" == id &&s9[i] == "Reserved"){
 				s9[i]= "not avalable";
-			}else if("10" == id){
+				check = 1;
+			}else if("10" == id &&s10[i] == "Reserved"){
 				s10[i]= "not avalable";
+				check = 1;
+			}else{
+				check = 0;
 			}
 		}
 	}
@@ -279,7 +304,7 @@ void Seat::changeStatusCheckin(string flightCode,string id){
 		writeFile <<s6[i]<<","<<s7[i]<<","<<s8[i]<<","<<s9[i]<<","<<s10[i]<<","<<endl;
 		}	
 	writeFile.close();
-
+	return check;
 }
 string Seat::getseatId(){
 	return seatId;
@@ -294,7 +319,55 @@ void Seat::addseat(string flightCode){
 	writeFile <<"avalable"<<","<<"avalable"<<","<<"avalable"<<","<<"avalable"<<","<<"avalable"<<","<<endl;
 	writeFile.close();
 }
-
+void Seat::deleteseat(string flightCode){
+	ifstream readFile;
+	string str;
+	readFile.open("DataBased\\seat.txt",ios::in);
+	int k=0;
+	while(getline(readFile,str)){
+		k++;
+	}
+	int i=0;
+	readFile.close();
+	string flight[k],filein,s1[k],s2[k],s3[k],s4[k],s5[k],s6[k],s7[k],s8[k],s9[k],s10[k];
+	readFile.open("DataBased\\seat.txt",ios::in);
+	while(getline(readFile,filein)){
+		flight[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s1[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s2[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s3[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s4[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s5[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s6[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s7[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s8[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s9[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		s10[i] = filein.substr(0,filein.find(','));
+		filein.erase(0,filein.find(',')+1);
+		i++;
+	}
+	ofstream writeFile;
+	writeFile.open("DataBased\\seat.txt",ios::out);
+	for(int i=0;i<k;i++){
+		if(flightCode == flight[i]){
+			continue;
+		}else{
+			writeFile <<flight[i]<<","<<s1[i]<<","<<s2[i]<<","<<s3[i]<<","<<s4[i]<<","<<s5[i]<<",";
+			writeFile <<s6[i]<<","<<s7[i]<<","<<s8[i]<<","<<s9[i]<<","<<s10[i]<<","<<endl;
+		}
+	}
+	writeFile.close();
+}
 bool Seat::checkseat(string flightCode,string seatid){
 	ifstream readFile;
 	string str;
@@ -336,34 +409,34 @@ bool Seat::checkseat(string flightCode,string seatid){
 	for(int i=0;i<k;i++){
 		if(flight[i]== flightCode){
 			if("1" == seatid){
-				if(s1[i] == "Reserved")
+				if(s1[i] != "avalable")
 					return false;
 			}else if("2" == seatid){
-				if(s2[i] == "Reserved")
+				if(s2[i] != "avalable")
 					return false;
 			}else if("3" == seatid){
-				if(s3[i] == "Reserved")
+				if(s3[i] != "avalable")
 					return false;
 			}else if("4" == seatid){
-				if(s4[i] == "Reserved")
+				if(s4[i] != "avalable")
 					return false;
 			}else if("5" == seatid){
-				if(s5[i] == "Reserved")
+				if(s5[i] != "avalable")
 					return false;
 			}else if("6" == seatid){
-				if(s6[i] == "Reserved")
+				if(s6[i] != "avalable")
 					return false;
 			}else if("7" == seatid){
-				if(s7[i] == "Reserved")
+				if(s7[i] != "avalable")
 					return false;
 			}else if("8" == seatid){
-				if(s8[i] == "Reserved")
+				if(s8[i] != "avalable")
 					return false;
 			}else if("9" == seatid){
-				if(s9[i] == "Reserved")
+				if(s9[i] != "avalable")
 					return false;
 			}else if("10" == seatid){
-				if(s10[i] == "Reserved")
+				if(s10[i] != "avalable")
 					return false;
 			}
 		}

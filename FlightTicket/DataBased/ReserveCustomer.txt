@@ -1,3 +1,11 @@
-woraprat,roekplian,62160336,phuket,bangkok,12.00,15.00,150,12,5,Reserved,125
-woraprat,roekplian,62160336,phuket,bangkok,12.00,15.00,150,12,6,Reserved,126
-jet,do,do,phuket,bangkok,12.00,15.00,150,12,6,Reserved,126
+woraprat,roekplian,1223,phuket,bangkok,12.00,15.00,150,12,2,Cancel,122
+jet,go,6114,phuket,bangkok,12.00,15.00,150,12,3,Cancel,123
+jet,go,6114,phuket,bangkok,12.00,15.00,150,14,1,Cancel,141
+jet,go,6114,phuket,bangkok,12.00,15.00,150,12,3,Reserved,123
+pon,go,4567,phuket,bangkok,12.00,15.00,150,12,4,Checkin,124
+je,uo,1234,phuket,bangkok,12.00,15.00,150,14,1,Cancel,141
+woraprat,roekplian,62160336,phuket,bangkok,12.00,15.00,150,12,1,Checkin,121
+woraprat,roekplian,62160336,phuket,bangkok,12.00,15.00,150,12,2,Cancel,122
+woraprat,roekplian,62160336,phuket,bangkok,12.00,15.00,150,14,1,Reserved,141
+woraprat,roekplian,62160336,phuket,bangkok,12.00,15.00,150,12,3,Reserved,123
+woraprat,roekplian,62160336,phuket,bangkok,12.00,15.00,150,12,4,Reserved,124

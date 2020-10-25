@@ -30,7 +30,6 @@ Flight Flight::reserveTicket(string fc){
 			F.arriveTime = arr;
 			F.price = price;
 			F.flightCode = code;
-			//save file
 			return F;
 		}
 	}//return "not found";	
@@ -85,6 +84,7 @@ void Flight::getFlight(){
 	cout << "==========================================================================================================================" << endl;
 }
 bool Flight::removeFlight(string flightCode){
+	Seat *s = new Seat();
 	int check;
 	ifstream readFile;
 	string str;
@@ -114,7 +114,7 @@ bool Flight::removeFlight(string flightCode){
 		i++;
 	}
 	readFile.close();
-	
+	s->deleteseat(flightCode);
 	ofstream writeFile;
 	writeFile.open("DataBased\\FlightData.txt",ios::out);
 	for(int i=0;i<k;i++){
@@ -129,6 +129,7 @@ bool Flight::removeFlight(string flightCode){
 	writeFile.close();
 	if(check == 1){
 		return true;
+		
 	}else{
 		return false;
 	}
@@ -158,5 +159,30 @@ double Flight::getprice(){
 }
 string Flight::getFlightCode(){
 	return flightCode;
+}
+bool Flight::checkFlight(string f){
+	string filein;
+	stringstream ss;
+	ifstream data;
+	data.open("DataBased\\FlightData.txt",ios::in);
+	string st,des,dep,arr,p,code;
+	while(getline(data,filein)){
+		st = filein.substr(0,filein.find(','));
+		   	filein.erase(0,filein.find(',')+1);
+		des = filein.substr(0,filein.find(','));
+			filein.erase(0,filein.find(',')+1);	
+		dep = filein.substr(0,filein.find(','));
+			filein.erase(0,filein.find(',')+1);	
+		arr = filein.substr(0,filein.find(','));
+			filein.erase(0,filein.find(',')+1);	
+		p = filein.substr(0,filein.find(','));
+			filein.erase(0,filein.find(',')+1);	
+		code = filein.substr(0,filein.find(','));
+			filein.erase(0,filein.find(',')+1);
+		if(f == code){
+			return true;
+		}
+	}//return "not found";	
+	return false;	
 }
 

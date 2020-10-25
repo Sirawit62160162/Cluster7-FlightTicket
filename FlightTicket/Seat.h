@@ -15,12 +15,14 @@ class Seat
 	public:
 		void showSeat(string flightCode);
 		Seat reserveSeat(string seatId,string flightCode);
-		void changeStatusCancel(string flightCode,string seatId);
-		void changeStatusCheckin(string flightCode,string seatId);
+		bool changeStatusCancel(string flightCode,string seatId);
+		bool changeStatusCheckin(string flightCode,string seatId);
 		string getseatId();
 		string getstatus();
 		void addseat(string flightCode);
+		void deleteseat(string flightCode);
 		bool checkseat(string flightCode,string seatId);
+		
 };
 
 #endif

@@ -30,6 +30,8 @@ class ReservationController
 		bool checkin(string ticketId);
 		Customer reserveTicketName(string firstname,string lastname,string passportId);
 		bool checkseat(string flightCode,string seatid); 
+		bool checkFlight(string flightCode);
+		bool checkRegister(string username,string password);
 };
 
 #endif

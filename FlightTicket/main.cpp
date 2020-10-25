@@ -10,7 +10,24 @@
 #include"ReservationCustomer.h"
 #include"Flight.h"
 #include"Seat.h"
+#include<conio.h>
 using namespace std;
+void enter(){
+		
+ cout << endl;
+ cout << "						---------------------------" << endl;
+ cout << "						- Press Enter to Continue -" << endl;
+ cout << "						---------------------------";
+   getch();
+}
+void outputMenu(char read[]){
+ ifstream menu;
+ menu.open(read);
+ string line = " ";//Read string from file
+ while(getline(menu,line)){
+  cout << line << endl;
+ }
+}//Read Menu from file
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 int main(int argc, char** argv) {
 	int choose;
@@ -25,82 +42,116 @@ int main(int argc, char** argv) {
 	//do{
 		MainMenu :
 			system("cls");
-			cout << "===== Reservation Fight Ticket =====" << endl;
-			cout << "1. Customer" << endl;
-			cout << "2. Employee" << endl;
-			cout << "3. Exit" << endl;
-			cout << "====================================" << endl;
-			cout << "Choose Menu : ";
+				char readA[25] = "DataBased\\mainmenu.txt";
+ 				outputMenu(readA);
+ 				cout<<endl;
+		//	cout << "						===== Reservation Fight Ticket =====" << endl;
+			cout << "								1. Customer" << endl;
+			cout << "								2. Employee" << endl;
+			cout << "								3. Exit" << endl;
+			cout << "						====================================" << endl;
+			cout << "								Choose Menu : ";
 			cin >> choose;
 			switch(choose){
 				case 1 :{
 							Customer :
 								cout << endl; 
 								checkcustomer = 1;
-								//system("cls");
-								cout << "===== Customer =====" << endl;
-								cout << "1. Login" << endl;
-								cout << "2. Register" << endl;
-								cout << "3. Back" << endl;
-								cout << "====================" << endl;
-								cout << "Choose Menu : ";
+								system("cls");
+									char readA[25] = "DataBased\\customer.txt";
+ 									outputMenu(readA);
+ 									cout<<endl;
+							//	cout << "						===== Customer =====" << endl;
+								cout << "								1. Login" << endl;
+								cout << "								2. Register" << endl;
+								cout << "								3. Back" << endl;
+								cout << "								====================" << endl;
+								cout << "								Choose Menu : ";
 								cin >> choose;
 								switch(choose){
 									case 1 :{
+												system("cls");
+												char readA[25] = "DataBased\\login.txt";
+ 												outputMenu(readA);
 										cout << endl;
-										cout << "======= Login =======" << endl;
-										cout << "Enter Username : ";
+									//	cout << "======= Login =======" << endl;
+										cout << "						Enter Username : ";
 										cin >> username;
-										cout << "Enter Password : ";
+										cout << "						Enter Password : ";
 										cin >> password; 								
 										if(interface->login(username,password) == true){
-											cout << "** Login Success **" << endl;
+											cout<<endl;
+											cout << "					** Login Success **" << endl;
+											enter();
 											showFlightCustomer:
+											system("cls");
 											interface->showFlight();
 											cout << endl;
-											cout << "Enter FlightCode : ";
-											cin >> flightCode;	
-											interface->reserveTicket(flightCode);
-											cout << "Enter : ";
+											cout << "					Enter FlightCode : ";
+											cin >> flightCode;
+											system("cls");
+											if(interface->reserveTicket(flightCode) == 0){
+												goto showFlightCustomer;
+											}
+											cout << "					Enter : ";
 											cin >> numseat;
 											if(interface->reserveSeat(numseat,flightCode,checkcustomer)==0){
+												cout<<endl;
+												cout << "				Seat not avalable" << endl;
+												enter();
 												goto showFlightCustomer;
 											}else{
-												interface->reserveSeat(numseat,flightCode,checkcustomer);
+												enter();
+												goto Customer;
 											}
-											goto Customer;
 										}else{
-											cout << "** Login Failed **" << endl;
+											cout<<endl;
+											cout << "						** Login Failed **" << endl;
+											enter();
 											goto Customer;
 										}
+										break;
 									}//Login
 									case 2 :{
+												system("cls");
+												char readA[25] = "DataBased\\register.txt";
+ 												outputMenu(readA);
 										cout << endl;
-										cout << "======== Register ========" << endl;
-										cout << "Enter Firstname : ";
+									//	cout << "					======== Register ========" << endl;
+										cout << "					Enter Firstname : ";
 										cin >> firstName;
-										cout << "Enter Lastname : ";
+										cout << "					Enter Lastname : ";
 										cin >> lastName;
-										cout << "Enter PassportID : ";
+										cout << "					Enter PassportID : ";
 										cin >> ppId;
-										cout << "Enter Username : ";
+										cout << "					Enter Username : ";
 										cin >> username;
-										cout << "Enter Password : ";
+										cout << "					Enter Password : ";
 										cin >> password; 		
-										if(interface->Register(firstName,lastName,ppId,username,password) == true);
-											cout << "** Register Success **" << endl;
-
+										if(interface->Register(firstName,lastName,ppId,username,password) == 0){
+											cout<<endl;
+											cout << "				** Register Failed **" << endl;
+										}else{
+											interface->Register(firstName,lastName,ppId,username,password);
+											cout<<endl;
+											cout << "				** Register Success **" << endl;
+										}
 										goto Customer;
 										break;
 									}//Register
-									case 3 : //goto MainMenu;
+									case 3 : 
+											goto MainMenu;
 											break; 
-									default : //goto Customer;
+									default : 
+											goto Customer;
 											break;
 								}//Customer
 				}//Customer
 				case 2 :{
-					Employee : 
+					Employee :
+						system("cls"); 
+						char readA[25] = "DataBased\\Employee.txt";
+ 						outputMenu(readA);
 						cout << endl;
 						checkcustomer = 2;
 						cout << "========== Employee ==========" << endl;
@@ -117,15 +168,22 @@ int main(int argc, char** argv) {
 							case 1 :{
 								ReserveFlight :
 								showFlightEmployee:
+								system("cls");
 								interface->showFlight();
 								cout << endl;
 								cout << "Enter FlightCode : ";
 								cin >> flightCode;
-								interface->reserveTicket(flightCode);
+								system("cls");
+								if(interface->reserveTicket(flightCode) == 0){
+									goto showFlightEmployee;
+								}
 								cout << "Enter : ";
 								cin >> numseat;
 								if(interface->reserveSeat(numseat,flightCode,checkcustomer)==0){
+									cout << "Seat not avalable" << endl;
+									enter();
 									goto showFlightEmployee;
+									
 								}else{
 									interface->reserveSeat(numseat,flightCode,checkcustomer);
 								}
@@ -136,15 +194,19 @@ int main(int argc, char** argv) {
 								cout << "Enter PassprotId : ";
 								cin >> ppId;
 								interface->reserveTicketName(firstName,lastName,ppId);
+								enter();
 								goto Employee;
+								break;
+							//	}
 							}
 							case 2 :{
+								system("cls");
 								interface->showCustomer();
-								
 								goto Employee;
 							}
 							case 3 :{
 								ShowFlight :
+									system("cls");
 									interface->showFlight();
 									cout << endl;
 									cout << "======= Menu =======" << endl;
@@ -171,22 +233,27 @@ int main(int argc, char** argv) {
 											cout << "Enter FlightCode : ";
 											cin >> flightCode;
 											
-											if(interface->addFlight(start,destination,departTime,arriveTime,price,flightCode) == true)
+											if(interface->addFlight(start,destination,departTime,arriveTime,price,flightCode) == true){
 												cout << "** Add Flight Success **" << endl;
-											goto ShowFlight;
-										}//Add Flight
+												enter();
+												goto ShowFlight;
+											}
+										}
+										//Add Flight
 										case 2 :{
 											cout << endl;
 											cout << "======== Delete Flight ========" << endl;
 											cout << "Enter FlightCode : ";
 											cin >> flightCode;
 				
-											if(interface->deleteFlight(flightCode) == true)
+											if(interface->deleteFlight(flightCode) == true){
 												cout << "** Deleter Flight Success **" << endl;
-											else
+												enter();
+											}else{
 												cout << "** Login Failed **" << endl;
-										
-											goto ShowFlight;
+												enter();
+												goto ShowFlight;
+											}
 										}//Delete Flight
 										case 3 : goto Employee;
 										default : goto ShowFlight; 
@@ -197,7 +264,16 @@ int main(int argc, char** argv) {
 									cout << "======== Check-In Flight ========" << endl;
 									cout << "Enter FlightCode : ";
 									cin >> ticketcode;
-									interface->checkin(ticketcode);		
+									if(interface->checkin(ticketcode)==0){
+										cout << "** Checkin failed **" << endl;
+										enter();
+										goto Employee;
+									}else{
+										interface->checkin(ticketcode);
+										cout << "** Checkin Success **" << endl;
+										enter();
+										goto Employee;
+									}
 									break;
 							}
 							case 5 :{
@@ -205,7 +281,16 @@ int main(int argc, char** argv) {
 									cout << "======== Cancel Flight ========" << endl;
 									cout << "Enter FlightCode : ";
 									cin >> ticketcode;
-									interface->cancelTicketId(ticketcode);
+									if(interface->cancelTicketId(ticketcode)== 0){
+										cout << "** Cancel failed **" << endl;
+										enter();
+										goto Employee;
+									}else{
+										interface->cancelTicketId(ticketcode);
+										cout << "** Cancel Success **" << endl;
+										enter();
+										goto Employee;
+									}
 									break;
 							}
 							case 6 : goto MainMenu;

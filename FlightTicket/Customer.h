@@ -24,6 +24,7 @@ class Customer
 		string getLastname();
 		string getPassportId();
 		void setReserveName(string f,string l,string p);
+		bool checkRegister(string username,string password);
 };
 
 #endif

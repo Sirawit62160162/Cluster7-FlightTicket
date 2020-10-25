@@ -50,7 +50,9 @@ void ReservationController::showFlight(){
 bool ReservationController::cancelTicketid(string ticketId){
 	string cancel = "Cancel";
 	ReservationCustomer *Can = new ReservationCustomer();
-	if(Can->cancelTicketId(ticketId)==1){
+	if(Can->cancelTicketId(ticketId)==0){
+		return false;
+	}else{
 		Can->cancelTicketId(ticketId);
 		Can->setStatusCancel(cancel,ticketId);
 	}
@@ -75,7 +77,9 @@ void ReservationController::addFlight(string start,string destination,string dep
 bool ReservationController::checkin(string ticketId){
 	string checkin = "Checkin";
 	ReservationCustomer *Che = new ReservationCustomer();
-	if(Che->checkinTicketId(ticketId)==1){
+	if(Che->checkinTicketId(ticketId) == 0){
+		return false;
+	}else{
 		Che->checkinTicketId(ticketId);
 		Che->setStatusCheckin(checkin,ticketId);
 	}
@@ -90,4 +94,11 @@ bool ReservationController::checkseat(string flightCode,string seatid){
 	return s->checkseat(flightCode,seatid);
 	
 } 
-
+bool ReservationController::checkFlight(string flightCode){
+	Flight *f = new Flight();
+	return f->checkFlight(flightCode);
+}
+bool ReservationController::checkRegister(string username,string password){
+	Customer *c = new Customer();
+	return c->checkRegister(username,password);
+}
