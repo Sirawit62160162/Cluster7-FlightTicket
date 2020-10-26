@@ -85,7 +85,7 @@ void Flight::getFlight(){
 }
 bool Flight::removeFlight(string flightCode){
 	Seat *s = new Seat();
-	int check;
+	int check=0;
 	ifstream readFile;
 	string str;
 	readFile.open("DataBased\\FlightData.txt",ios::in);
@@ -96,7 +96,6 @@ bool Flight::removeFlight(string flightCode){
 	readFile.close();
 	string st[k],des[k],dep[k],arr[k],p[k],code[k];
 	int i=0;
-	
 	readFile.open("DataBased\\FlightData.txt",ios::in);
 	while(getline(readFile,str)){
 		st[i] = str.substr(0,str.find(','));
@@ -118,10 +117,9 @@ bool Flight::removeFlight(string flightCode){
 	ofstream writeFile;
 	writeFile.open("DataBased\\FlightData.txt",ios::out);
 	for(int i=0;i<k;i++){
-		cout << st[i] << " " << des[i] << " " << dep[i] << " " << arr[i] << " " << p[i] << " " << code[i] << endl;
 		if(code[i] == flightCode){
-			continue;
 			check = 1;
+			continue;
 		}else{
 			writeFile << st[i] << "," << des[i] << "," << dep[i] << "," << arr[i] << "," << p[i] << "," << code[i] << endl;
 		}

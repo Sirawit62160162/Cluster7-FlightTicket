@@ -196,10 +196,20 @@ void ReservationCustomer::showCustomer(){
 	show.open("DataBased\\ReserveCustomer.txt",ios::in);
 	string firstname,lastname,passportID,str,st,des,dep,arr,p,code,seatID,status,ticketID;
 	cout << endl;
-	cout << "==================================================== ReserveCustomer ====================================================" << endl;
-	cout <<"Firstname"<<setw(9)<<"Lastname"<< setw(19)<<"PassportID"<< setw(8)<<"Start"<<setw(17)<<" Destination "<<setw(11)<<"DepartureTime";
-	cout <<setw(11)<<"ArriveTime"<<setw(9)<<"Price"<<setw(13)<<"FlightCode"<<setw(8)<<"SeatID"<<setw(7)<<"Status"<<setw(15)<<"TicketID"<<endl;
-	cout << "=========================================================================================================================" << endl;
+	cout << "==================================================== ReserveCustomer =========================================================================" << endl;
+		cout << setw(10) << setfill(' ') << left << "Firstname"
+		<< setw(17) << setfill(' ') << left << "Lastname"
+		<< setw(13) << setfill(' ') << left << "passportID"
+		<< setw(10) << setfill(' ') << left << "Start" 
+		<< setw(12) << setfill(' ') << left << "Destination"  
+		<< setw(14) << setfill(' ') << left << "DepartureTime" 
+		<< setw(14) << setfill(' ') << left << "ArriveTime" 
+		<< setw(8) << setfill(' ') << left << "Price"      
+		<< setw(12) << setfill(' ') << left << "FlightCode" 
+		<< setw(7) << setfill(' ') << left << "SeatID"  
+		<< setw(13) << setfill(' ') << left << "Status"
+		<< setw(20) << setfill(' ') << left << "TicketID" << endl;  
+	cout << "==============================================================================================================================================" << endl;
 	while(getline(show,str)){
 		firstname = str.substr(0,str.find(','));
 		str.erase(0,str.find(',')+1);
@@ -239,7 +249,7 @@ void ReservationCustomer::showCustomer(){
 		<< setw(13) << setfill(' ') << left << status
 		<< setw(20) << setfill(' ') << left << ticketID << endl;  
 	}
-	cout << "==========================================================================================================================" << endl;	
+	cout << "==============================================================================================================================================" << endl;	
 }
 bool ReservationCustomer::checkinTicketId(string ticketcode){
 	string flightCode,seatId,status,Ticketcheck,name,lname,passId,start,destination,tStart,tDestination,price;

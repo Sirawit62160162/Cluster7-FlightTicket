@@ -1,4 +1,4 @@
-12,Reserved,Reserved,Reserved,Reserved,Reserved,Reserved,not available,not available,Reserved,available,
+13,available,available,available,available,available,available,available,available,available,available,
 14,available,available,available,available,available,available,available,available,available,available,
 15,available,available,available,available,available,available,available,available,available,available,
 16,available,available,available,available,available,available,available,available,available,available,

@@ -26,14 +26,14 @@ bool UI::login(string username,string password){
 	}
 	delete log;
 }
-bool UI::reserveTicket(string flightCode){
+bool UI::reserveTicket(string flightCode,int check){
 	ReservationController *reflight = new ReservationController();
 	if(reflight->checkFlight(flightCode) == 0){
 		return false;
 	}else{
 		flight = reflight->reserveTicket(flightCode);
 		//show
-
+		if(check == 1){
 			cout << "========== Ticket Information ===========" << endl;
 			cout << "+++ Travel information +++" << endl;
 			cout << "  -> FlightCode : " << flight.getFlightCode() << endl;
@@ -53,6 +53,26 @@ bool UI::reserveTicket(string flightCode){
 			cout << "  -> Passport ID : " << customer.getPassportId() << endl;
 			cout << "=========================================" << endl;
 				//
+		}else{
+				cout << "========== Ticket Information ===========" << endl;
+			cout << "+++ Travel information +++" << endl;
+			cout << "  -> FlightCode : " << flight.getFlightCode() << endl;
+			cout << "  -> Start : " << flight.getStart() << endl; 
+			cout << "  -> Destination : " << flight.getdestination() << endl;
+			cout << endl;
+			cout << "+++ Time +++" << endl;
+			cout << "  -> DepartureTime : " << flight.getdepartureTime() << " o'clock" << endl;
+			cout << "  -> ArriveTime    : " << flight.getarriveTime() << " o'clock" << endl;
+			cout << endl;
+			cout << "+++ Charges(/person) ++" << endl;
+			cout << "  -> Price : " << flight.getprice() << " Baht" << endl;
+			cout << endl;
+			cout << "+++ Traveler information +++" << endl;
+			cout << "  -> Firstname : " << endl;
+			cout << "  -> Lastname : " << endl;
+			cout << "  -> Passport ID : " << endl;
+			cout << "=========================================" << endl;
+		}
 		enter();
 		system("cls");
 		reflight->getSeat(flightCode);

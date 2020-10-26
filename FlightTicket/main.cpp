@@ -108,7 +108,7 @@ int main(int argc, char** argv) {
 																	cout << "Enter FlightCode : ";
 																	cin >> flightCode;
 																	system("cls");
-																	if(interface->reserveTicket(flightCode) == 0){
+																	if(interface->reserveTicket(flightCode,checkcustomer) == 0){
 																		goto showFlightCustomer;
 																	}
 																	cout << endl;
@@ -217,7 +217,7 @@ int main(int argc, char** argv) {
 											cout << "Enter FlightCode : ";
 											cin >> flightCode;
 											system("cls");
-											if(interface->reserveTicket(flightCode) == 0){
+											if(interface->reserveTicket(flightCode,checkcustomer) == 0){
 												goto showFlightEmployee;
 											}
 											cout << "========== Choose Seat ===========" << endl;
@@ -299,11 +299,11 @@ int main(int argc, char** argv) {
 											cout << "Enter FlightCode : ";
 											cin >> flightCode;
 				
-											if(interface->deleteFlight(flightCode) == true){
-												cout << "** Deleter Flight Success **" << endl;
+											if(interface->deleteFlight(flightCode) == 1){
+												cout << "** Delete Flight Success **" << endl;
 												enter();
 											}else{
-												cout << "** Deleter Failed **" << endl;
+												cout << "** Delete Failed **" << endl;
 												enter();
 												goto ShowFlight;
 											}

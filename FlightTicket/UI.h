@@ -20,7 +20,7 @@ class UI
 	public:
 		bool Register(string firstname,string lastname,string passportId,string username,string password);
 		bool login(string username,string password);
-		bool reserveTicket(string flightCode);
+		bool reserveTicket(string flightCode,int check);
 		bool reserveSeat(string seatId,string flightCode,int check);
 		void showFlight();
 		bool cancelTicketId(string ticketId);
@@ -29,8 +29,6 @@ class UI
 		bool addFlight(string start,string destination,string departureTime,string arriveTime,double price,string flightCode);
 		bool checkin(string ticketId);
 		void reserveTicketName(string firstname,string lastname,string passportId);
-
-
 		void enter(){
 			cout << endl;
  			cout << "---------------------------" << endl;

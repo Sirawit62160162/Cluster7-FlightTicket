@@ -32,7 +32,7 @@ void Seat::showSeat(string flightCode){
 		if(flightCode == flight){
 			char read[25] = "ASCII\\seat.txt";
 			outputMenu(read);
-			cout << "========= FlightCode : " << flightCode << " =========" << endl;
+			cout << "================== FlightCode : " << flightCode << "==================" << endl;
 			cout << setw(15) << setfill(' ') << left << "|Seat No.|"
 			<< setw(15) << setfill(' ') << left << "|  Status  |" << endl;
 			
