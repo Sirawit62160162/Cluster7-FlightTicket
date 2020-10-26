@@ -116,7 +116,7 @@ int main(int argc, char** argv) {
 																	cout << "========== Choose Seat ===========" << endl;
 												     				cout << "Enter Seat No. : ";
 																	cin >> numseat;
-																	}while(numseat!="1"||numseat!="2"||numseat!="3"||numseat!="4"||numseat!="5"||numseat!="6"||numseat!="7"||numseat!="8"||numseat!="9"||numseat!="10");
+																	}while(numseat<"1"||numseat>"10");
 																	if(interface->reserveSeat(numseat,flightCode,checkcustomer)==0){
 																	cout<<endl;
 																	cout << "-> Seat not available." << endl;
@@ -227,7 +227,7 @@ int main(int argc, char** argv) {
 												cout << "Enter Seat No. : ";
 	
 												cin >> numseat;
-											}while(numseat!="1"||numseat!="2"||numseat!="3"||numseat!="4"||numseat!="5"||numseat!="6"||numseat!="7"||numseat!="8"||numseat!="9"||numseat!="10");
+											}while(numseat<"1"||numseat>"10");
 											if(interface->reserveSeat(numseat,flightCode,checkcustomer)==0){
 												cout << "Seat not avalable" << endl;
 												enter();
