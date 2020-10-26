@@ -204,36 +204,52 @@ int main(int argc, char** argv) {
 								system("cls");
 								interface->showFlight();
 								cout << endl;
-								cout << "Enter FlightCode : ";
-								cin >> flightCode;
-								system("cls");
-								if(interface->reserveTicket(flightCode) == 0){
-									goto showFlightEmployee;
-								}
-								cout << "Enter : ";
-								cin >> numseat;
-								if(interface->reserveSeat(numseat,flightCode,checkcustomer)==0){
-									cout << "Seat not avalable" << endl;
-									enter();
-									goto showFlightEmployee;
-									
-								}else{
-									interface->reserveSeat(numseat,flightCode,checkcustomer);
-								}
-								system("cls");
-								char readA[35] = "ASCII\\Customer information.txt";
- 								outputMenu(readA);
-								cout << "Enter Firstname : ";
-								cin >> firstName;
-								cout << "Enter Lastname : ";
-								cin >> lastName;
-								cout << "Enter PassprotId : ";
-								cin >> ppId;
-								interface->reserveTicketName(firstName,lastName,ppId);
-								enter();
-								goto Employee;
-								break;
-							//	}
+								cout << "=========== Menu ==========" << endl;
+								cout << "1. Researve Flight Ticket" << endl;
+								cout << "2. Logout" << endl	;
+								cout << "===========================" << endl;
+								cout << "Choose Menu : ";
+								cin >> choose;
+								switch(choose){
+										case 1 :{	
+											cout << endl;
+											cout << "======= Researve Flight Ticket =======" << endl;
+											cout << "Enter FlightCode : ";
+											cin >> flightCode;
+											system("cls");
+											if(interface->reserveTicket(flightCode) == 0){
+												goto showFlightEmployee;
+											}
+											cout << "========== Choose Seat ===========" << endl;
+											cout << "Enter Seat No. : ";
+											cin >> numseat;
+											if(interface->reserveSeat(numseat,flightCode,checkcustomer)==0){
+												cout << "Seat not avalable" << endl;
+												enter();
+												goto showFlightEmployee;
+											}else{
+												interface->reserveSeat(numseat,flightCode,checkcustomer);
+											}
+											system("cls");
+											char readA[35] = "ASCII\\Customer information.txt";
+ 											outputMenu(readA);
+											cout << "Enter Firstname : ";
+											cin >> firstName;
+											cout << "Enter Lastname : ";
+											cin >> lastName;
+											cout << "Enter PassprotId : ";
+											cin >> ppId;
+											interface->reserveTicketName(firstName,lastName,ppId);
+											enter();
+											goto Employee;
+											break;
+										}
+										case 2:{
+											goto Employee;
+											break;
+										}
+										default : goto showFlightEmployee;
+								}				
 							}
 							case 2 :{
 								system("cls");

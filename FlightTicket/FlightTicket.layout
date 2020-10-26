@@ -1,11 +1,11 @@
 <<<<<<< HEAD
 [Editors]
 Order=8,7,10,9,3,4,12,11,6,5,2,1,0
-Focused=12
+Focused=0
 [Editor_0]
-CursorCol=22
-CursorRow=224
-TopLine=227
+CursorCol=9
+CursorRow=206
+TopLine=184
 LeftChar=1
 [Editor_1]
 CursorCol=3
@@ -13,9 +13,9 @@ CursorRow=49
 TopLine=2
 LeftChar=1
 [Editor_2]
-CursorCol=66
-CursorRow=154
-TopLine=109
+CursorCol=69
+CursorRow=102
+TopLine=1
 LeftChar=1
 [Editor_3]
 CursorCol=35
@@ -43,9 +43,9 @@ CursorRow=27
 TopLine=1
 LeftChar=1
 [Editor_8]
-CursorCol=6
-CursorRow=1
-TopLine=10
+CursorCol=60
+CursorRow=10
+TopLine=1
 LeftChar=1
 [Editor_9]
 CursorCol=37
@@ -130,8 +130,8 @@ CursorRow=14
 TopLine=1
 LeftChar=1
 [Editor_12]
-CursorCol=120
-CursorRow=201
+CursorCol=47
+CursorRow=197
 TopLine=184
 LeftChar=1
 [Editor_13]
