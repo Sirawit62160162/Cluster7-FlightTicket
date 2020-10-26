@@ -107,7 +107,6 @@ int main(int argc, char** argv) {
 																	cout << "======= Researve Flight Ticket =======" << endl;
 																	cout << "Enter FlightCode : ";
 																	cin >> flightCode;
-																	do{
 																	system("cls");
 																	if(interface->reserveTicket(flightCode,checkcustomer) == 0){
 																		goto showFlightCustomer;
@@ -116,7 +115,6 @@ int main(int argc, char** argv) {
 																	cout << "========== Choose Seat ===========" << endl;
 												     				cout << "Enter Seat No. : ";
 																	cin >> numseat;
-																	}while(numseat<"1"||numseat>"10");
 																	if(interface->reserveSeat(numseat,flightCode,checkcustomer)==0){
 																	cout<<endl;
 																	cout << "-> Seat not available." << endl;
@@ -218,7 +216,6 @@ int main(int argc, char** argv) {
 											cout << "======= Researve Flight Ticket =======" << endl;
 											cout << "Enter FlightCode : ";
 											cin >> flightCode;
-											do{
 												system("cls");
 												if(interface->reserveTicket(flightCode,checkcustomer) == 0){
 													goto showFlightEmployee;
@@ -227,7 +224,6 @@ int main(int argc, char** argv) {
 												cout << "Enter Seat No. : ";
 	
 												cin >> numseat;
-											}while(numseat<"1"||numseat>"10");
 											if(interface->reserveSeat(numseat,flightCode,checkcustomer)==0){
 												cout << "Seat not avalable" << endl;
 												enter();
@@ -309,6 +305,7 @@ int main(int argc, char** argv) {
 				
 											if(interface->deleteFlight(flightCode) == 1){
 												cout << "** Delete Flight Success **" << endl;
+												goto ShowFlight;
 												enter();
 											}else{
 												cout << "** Delete Failed **" << endl;

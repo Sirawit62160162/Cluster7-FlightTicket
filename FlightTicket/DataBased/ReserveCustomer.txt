@@ -1,1 +1,4 @@
 1,1,1,bangkok,pruket,15.00,16.00,150,13,1,Reserved,1301
+woraprat,roekplian,62160336,bangkok,pruket,15.00,16.00,150,13,2,Checkin,1302
+pam,rr,123,bangkok,pruket,15.00,16.00,150,13,4,Cancel,1304
+pam,dd,123,bangkok,pruket,15.00,16.00,150,13,4,Checkin,1304
