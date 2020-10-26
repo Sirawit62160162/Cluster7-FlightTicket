@@ -11,9 +11,9 @@ bool UI::Register(string firstname,string lastname,string passportId,string user
 }
 bool UI::login(string username,string password){
 	ReservationController *log = new ReservationController();
-	customer = log->getCustomerinformation(username,password);
 	//show
 	if(log->login(username,password)== 1){
+		customer = log->getCustomerinformation(username,password);
 		cout << endl;
 		cout << "============ User Information ============" << endl;
 		cout << "Firstname : " << customer.getFirstname() << endl;
@@ -54,7 +54,7 @@ bool UI::reserveTicket(string flightCode,int check){
 			cout << "=========================================" << endl;
 				//
 		}else{
-				cout << "========== Ticket Information ===========" << endl;
+			cout << "========== Ticket Information ===========" << endl;
 			cout << "+++ Travel information +++" << endl;
 			cout << "  -> FlightCode : " << flight.getFlightCode() << endl;
 			cout << "  -> Start : " << flight.getStart() << endl; 
@@ -88,9 +88,6 @@ bool UI::reserveSeat(string seatId,string flightCode,int check){
 	}else{
 		seat = s->reserveSeat(seatId,flightCode);
 	}
-	seat = s->reserveSeat(seatId,flightCode);
-	//show 
-	//
 	if(check == 1){
 		system("cls");
 		char readA[25] = "ASCII\\reserveSuccess.txt";
