@@ -290,8 +290,11 @@ int main(int argc, char** argv) {
 											cin >> price;
 											cout << "Enter FlightCode : ";
 											cin >> flightCode;
-											
-											if(interface->addFlight(start,destination,departTime,arriveTime,price,flightCode) == true){
+											if(interface->addFlight(start,destination,departTime,arriveTime,price,flightCode) == 0){
+												cout << "** Add Flight Failed **" << endl;
+												enter();
+												goto ShowFlight;
+											}else{
 												cout << "** Add Flight Success **" << endl;
 												enter();
 												goto ShowFlight;

@@ -153,9 +153,13 @@ bool UI::deleteFlight(string flightCode){
 }
 bool UI::addFlight(string start,string destination,string departureTime,string arriveTime,double price,string flightCode){
 	ReservationController *addFlight = new ReservationController();
-	addFlight->addFlight(start,destination,departureTime,arriveTime,price,flightCode);
+	if(addFlight->checkFlight(flightCode)== 1){
+		return false;
+	}else{
+		addFlight->addFlight(start,destination,departureTime,arriveTime,price,flightCode);
+		return true;
+	}
 	delete addFlight;
-	return true;
 }
 
 bool UI::checkin(string ticketId){
