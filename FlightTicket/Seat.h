@@ -23,6 +23,14 @@ class Seat
 		void deleteseat(string flightCode);
 		bool checkseat(string flightCode,string seatId);
 		
+		void outputMenu(char read[]){
+ 			ifstream menu;
+ 			menu.open(read);
+ 			string line = " ";//Read string from file
+ 			while(getline(menu,line)){
+  			cout << line << endl;
+ 			}
+		}
 };
 
 #endif

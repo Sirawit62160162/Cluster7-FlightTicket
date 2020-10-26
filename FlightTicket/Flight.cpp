@@ -46,13 +46,13 @@ void Flight::getFlight(){
 	int num = 1;
 	cout << endl;
 	cout << "==================================================== Flight Available ====================================================" << endl;
-	cout << setw(10) << setfill(' ') << left << "No." 
-	<< setw(10) << setfill(' ') << left << "Start" 
-	<< setw(15) << setfill(' ') << left << "Destination"   
-	<< setw(20) << setfill(' ') << left << "DepartureTime" 
-	<< setw(20) << setfill(' ') << left << "ArriveTime" 
-	<< setw(20) << setfill(' ') << left << "Price"    
-	<< setw(15) << setfill(' ') << left << "FlightCode" << endl;  
+	cout << setw(10) << setfill(' ') << left << "|No.|" 
+	<< setw(10) << setfill(' ') << left << "|Start|" 
+	<< setw(15) << setfill(' ') << left << "|Destination|"   
+	<< setw(20) << setfill(' ') << left << "|DepartureTime|" 
+	<< setw(20) << setfill(' ') << left << "|ArriveTime|" 
+	<< setw(20) << setfill(' ') << left << "|Price|"    
+	<< setw(15) << setfill(' ') << left << "|FlightCode|" << endl;  
 	cout << "--------------------------------------------------------------------------------------------------------------------------" << endl;
 	while(getline(showFlight,str)){
 		stringstream ss;

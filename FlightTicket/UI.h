@@ -8,6 +8,7 @@
 #include<cmath>
 #include"ReservationController.h"
 #include"Flight.h"
+#include<conio.h>
 using namespace std;
 
 class UI
@@ -28,7 +29,24 @@ class UI
 		bool addFlight(string start,string destination,string departureTime,string arriveTime,double price,string flightCode);
 		bool checkin(string ticketId);
 		void reserveTicketName(string firstname,string lastname,string passportId);
-			
+
+
+		void enter(){
+			cout << endl;
+ 			cout << "---------------------------" << endl;
+ 			cout << "- Press Enter to Continue -" << endl;
+ 			cout << "---------------------------";
+   			getch();
+		}		
+		
+		void outputMenu(char read[]){
+ 			ifstream menu;
+ 			menu.open(read);
+ 			string line = " ";//Read string from file
+		 	while(getline(menu,line)){
+  				cout << line << endl;
+ 			}
+		}//Read Menu from file	
 };
 
 #endif

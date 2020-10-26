@@ -17,7 +17,11 @@ Customer ReservationCustomer::getCustomerInformation(string user,string pass){
 }
 
 string ReservationCustomer::createTicketId(string flight,string seat){
-	ticketId = flight + seat;
+	if(seat != "10"){
+		ticketId = flight + "0" + seat;
+	}else{
+		ticketId = flight + seat;	
+	}
 	return ticketId;	
 }	
 
@@ -193,6 +197,9 @@ void ReservationCustomer::showCustomer(){
 	string firstname,lastname,passportID,str,st,des,dep,arr,p,code,seatID,status,ticketID;
 	cout << endl;
 	cout << "==================================================== ReserveCustomer ====================================================" << endl;
+	cout <<"Firstname"<<setw(9)<<"Lastname"<< setw(19)<<"PassportID"<< setw(8)<<"Start"<<setw(17)<<" Destination "<<setw(11)<<"DepartureTime";
+	cout <<setw(11)<<"ArriveTime"<<setw(9)<<"Price"<<setw(13)<<"FlightCode"<<setw(8)<<"SeatID"<<setw(7)<<"Status"<<setw(15)<<"TicketID"<<endl;
+	cout << "=========================================================================================================================" << endl;
 	while(getline(show,str)){
 		firstname = str.substr(0,str.find(','));
 		str.erase(0,str.find(',')+1);
@@ -220,17 +227,17 @@ void ReservationCustomer::showCustomer(){
 		str.erase(0,str.find(',')+1);
 		/*show*/
 		cout << setw(10) << setfill(' ') << left << firstname
-		<< setw(13) << setfill(' ') << left << lastname
+		<< setw(17) << setfill(' ') << left << lastname
 		<< setw(13) << setfill(' ') << left << passportID
 		<< setw(10) << setfill(' ') << left << st 
-		<< setw(10) << setfill(' ') << left << des  
-		<< setw(10) << setfill(' ') << left << dep 
-		<< setw(10) << setfill(' ') << left << arr 
+		<< setw(12) << setfill(' ') << left << des  
+		<< setw(14) << setfill(' ') << left << dep 
+		<< setw(14) << setfill(' ') << left << arr 
 		<< setw(8) << setfill(' ') << left << p      
-		<< setw(8) << setfill(' ') << left << code 
-		<< setw(5) << setfill(' ') << left << seatID  
+		<< setw(12) << setfill(' ') << left << code 
+		<< setw(7) << setfill(' ') << left << seatID  
 		<< setw(13) << setfill(' ') << left << status
-		<< setw(5) << setfill(' ') << left << ticketID << endl;  
+		<< setw(20) << setfill(' ') << left << ticketID << endl;  
 	}
 	cout << "==========================================================================================================================" << endl;	
 }

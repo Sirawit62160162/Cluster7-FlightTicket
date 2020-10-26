@@ -30,10 +30,21 @@ void Seat::showSeat(string flightCode){
 		s[9] = filein.substr(0,filein.find(','));
 			filein.erase(0,filein.find(',')+1);
 		if(flightCode == flight){
-			cout << "=========== " << flightCode << " ===========" << endl;
+			char read[25] = "ASCII\\seat.txt";
+			outputMenu(read);
+			cout << "========= FlightCode : " << flightCode << " =========" << endl;
+			cout << setw(15) << setfill(' ') << left << "|Seat No.|"
+			<< setw(15) << setfill(' ') << left << "|  Status  |" << endl;
+			
 			for(int i=0;i<10;i++){
-				cout  <<setw(3)<< i+1 << "     "<< s[i] << endl;
-			}
+				stringstream temp;
+				temp << i+1;
+				string str = "    "+temp.str(); 
+				string seat = " "+s[i];
+				cout << setw(15) << setfill(' ') << left << str 
+				<< setw(15) << setfill(' ') << left << seat << endl;
+		}
+			cout << "==================================" << endl;
 		}
 	}	
 }
@@ -178,34 +189,34 @@ bool Seat::changeStatusCancel(string flightCode,string id){
 	for(int i=0;i<k;i++){
 		if(flight[i]== flightCode){
 			if("1" == id && s1[i] == "Reserved"){
-				s1[i]= "avalable";
+				s1[i]= "available";
 				check = 1;
 			}else if("2" == id && s2[i] == "Reserved"){
-				s2[i]= "avalable";
+				s2[i]= "available";
 				check = 1;
 			}else if("3" == id && s3[i] == "Reserved"){
-				s3[i]= "avalable";
+				s3[i]= "available";
 				check = 1;
 			}else if("4" == id && s4[i] == "Reserved"){
-				s4[i]= "avalable";
+				s4[i]= "available";
 				check = 1;
 			}else if("5" == id && s5[i] == "Reserved"){
-				s5[i]= "avalable";
+				s5[i]= "available";
 				check = 1;
 			}else if("6" == id && s6[i] == "Reserved"){
-				s6[i]= "avalable";
+				s6[i]= "available";
 				check = 1;
 			}else if("7" == id && s7[i] == "Reserved"){
-				s7[i]= "avalable";
+				s7[i]= "available";
 				check = 1;
 			}else if("8" == id && s8[i] == "Reserved"){
-				s8[i]= "avalable";
+				s8[i]= "available";
 				check = 1;
 			}else if("9" == id && s9[i] == "Reserved"){
-				s9[i]= "avalable";
+				s9[i]= "available";
 				check = 1;
 			}else if("10" == id && s10[i] == "Reserved"){
-				s10[i]= "avalable";
+				s10[i]= "available";
 				check = 1;
 			}else{
 				check = 0;
@@ -263,34 +274,34 @@ bool Seat::changeStatusCheckin(string flightCode,string id){
 	for(int i=0;i<k;i++){
 		if(flight[i]== flightCode){
 			if("1" == id && s1[i] == "Reserved"){
-				s1[i] = "not avalable";
+				s1[i] = "not available";
 				check = 1;
 			}else if("2" == id && s2[i] == "Reserved"){
-				s2[i]= "not avalable";
+				s2[i]= "not available";
 				check = 1;
 			}else if("3" == id && s3[i] == "Reserved"){
-				s3[i]= "not avalable";
+				s3[i]= "not available";
 				check = 1;
 			}else if("4" == id &&s4[i] == "Reserved"){
-				s4[i]= "not avalable";
+				s4[i]= "not available";
 				check = 1;
 			}else if("5" == id &&s5[i] == "Reserved"){
-				s5[i]= "not avalable";
+				s5[i]= "not available";
 				check = 1;
 			}else if("6" == id &&s6[i] == "Reserved"){
-				s6[i]= "not avalable";
+				s6[i]= "not available";
 				check = 1;
 			}else if("7" == id &&s7[i] == "Reserved"){
-				s7[i]= "not avalable";
+				s7[i]= "not available";
 				check = 1;
 			}else if("8" == id &&s8[i] == "Reserved"){
-				s8[i]= "not avalable";
+				s8[i]= "not available";
 				check = 1;
 			}else if("9" == id &&s9[i] == "Reserved"){
-				s9[i]= "not avalable";
+				s9[i]= "not available";
 				check = 1;
 			}else if("10" == id &&s10[i] == "Reserved"){
-				s10[i]= "not avalable";
+				s10[i]= "not available";
 				check = 1;
 			}else{
 				check = 0;
@@ -315,8 +326,8 @@ string Seat::getstatus(){
 void Seat::addseat(string flightCode){
 	ofstream writeFile;
 	writeFile.open("DataBased\\seat.txt",ios::app);
-	writeFile << flightCode <<","<< "avalable"<<","<<"avalable"<<","<<"avalable"<<","<<"avalable"<<","<<"avalable"<<",";
-	writeFile <<"avalable"<<","<<"avalable"<<","<<"avalable"<<","<<"avalable"<<","<<"avalable"<<","<<endl;
+	writeFile << flightCode <<","<< "available"<<","<<"available"<<","<<"available"<<","<<"available"<<","<<"available"<<",";
+	writeFile <<"available"<<","<<"available"<<","<<"available"<<","<<"available"<<","<<"available"<<","<<endl;
 	writeFile.close();
 }
 void Seat::deleteseat(string flightCode){
@@ -409,34 +420,34 @@ bool Seat::checkseat(string flightCode,string seatid){
 	for(int i=0;i<k;i++){
 		if(flight[i]== flightCode){
 			if("1" == seatid){
-				if(s1[i] != "avalable")
+				if(s1[i] != "available")
 					return false;
 			}else if("2" == seatid){
-				if(s2[i] != "avalable")
+				if(s2[i] != "available")
 					return false;
 			}else if("3" == seatid){
-				if(s3[i] != "avalable")
+				if(s3[i] != "available")
 					return false;
 			}else if("4" == seatid){
-				if(s4[i] != "avalable")
+				if(s4[i] != "available")
 					return false;
 			}else if("5" == seatid){
-				if(s5[i] != "avalable")
+				if(s5[i] != "available")
 					return false;
 			}else if("6" == seatid){
-				if(s6[i] != "avalable")
+				if(s6[i] != "available")
 					return false;
 			}else if("7" == seatid){
-				if(s7[i] != "avalable")
+				if(s7[i] != "available")
 					return false;
 			}else if("8" == seatid){
-				if(s8[i] != "avalable")
+				if(s8[i] != "available")
 					return false;
 			}else if("9" == seatid){
-				if(s9[i] != "avalable")
+				if(s9[i] != "available")
 					return false;
 			}else if("10" == seatid){
-				if(s10[i] != "avalable")
+				if(s10[i] != "available")
 					return false;
 			}
 		}

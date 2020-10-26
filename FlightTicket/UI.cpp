@@ -14,9 +14,12 @@ bool UI::login(string username,string password){
 	customer = log->getCustomerinformation(username,password);
 	//show
 	if(log->login(username,password)== 1){
-		cout << "=========================================" << endl;
-		cout << customer.getFirstname() << " "<< customer.getLastname() <<" "<< customer.getPassportId() << endl;
-	    cout << "=========================================" << endl;
+		cout << endl;
+		cout << "============ User Information ============" << endl;
+		cout << "Firstname : " << customer.getFirstname() << endl;
+		cout << "Lastname : " << customer.getLastname() << endl;
+		cout << "Passport ID : " << customer.getPassportId() << endl;
+	    cout << "==========================================" << endl;
 	    return true;
 	}else{
 		return false;
@@ -30,12 +33,28 @@ bool UI::reserveTicket(string flightCode){
 	}else{
 		flight = reflight->reserveTicket(flightCode);
 		//show
-			cout << "=============================================================" << endl;
-			cout <<  " " << flight.getStart() << " --> " << setw(12) << flight.getdestination() <<" | "; 
-			cout <<  flight.getdepartureTime() << "-" << flight.getarriveTime() << " | "; 
-			cout <<  setw(5) << flight.getprice() << "Bath | " << flight.getFlightCode() << endl;
-			cout << "=============================================================" << endl;
-		//
+
+			cout << "========== Ticket Information ===========" << endl;
+			cout << "+++ Travel information +++" << endl;
+			cout << "  -> FlightCode : " << flight.getFlightCode() << endl;
+			cout << "  -> Start : " << flight.getStart() << endl; 
+			cout << "  -> Destination : " << flight.getdestination() << endl;
+			cout << endl;
+			cout << "+++ Time +++" << endl;
+			cout << "  -> DepartureTime : " << flight.getdepartureTime() << " o'clock" << endl;
+			cout << "  -> ArriveTime    : " << flight.getarriveTime() << " o'clock" << endl;
+			cout << endl;
+			cout << "+++ Charges(/person) ++" << endl;
+			cout << "  -> Price : " << flight.getprice() << " Baht" << endl;
+			cout << endl;
+			cout << "+++ Traveler information +++" << endl;
+			cout << "  -> Firstname : " << customer.getFirstname() << endl;
+			cout << "  -> Lastname : " << customer.getLastname() << endl;
+			cout << "  -> Passport ID : " << customer.getPassportId() << endl;
+			cout << "=========================================" << endl;
+				//
+		enter();
+		system("cls");
 		reflight->getSeat(flightCode);
 		delete reflight;
 		return true;
@@ -51,22 +70,39 @@ bool UI::reserveSeat(string seatId,string flightCode,int check){
 	}
 	seat = s->reserveSeat(seatId,flightCode);
 	//show 
-		cout << "==================================================" << endl;
-		cout << "Seatid : " << seat.getseatId() << endl;
-		cout << "Status : " << seat.getstatus() << endl;
-		cout << "==================================================" << endl;
 	//
 	if(check == 1){
-		ticketId = s->createTickedId(flight.getFlightCode(),seat.getseatId());
-		cout << "Ticket ID : " << ticketId << endl;
-		cout << "============================ Ticket ===========================" << endl;
-		cout <<  customer.getFirstname() << " " << customer.getLastname() <<" " << customer.getPassportId() << endl;
-		cout << flight.getStart() << "->" << flight.getdestination() << " | " << flight.getdepartureTime() << "-" << flight.getarriveTime() << " | " << flight.getFlightCode() <<endl;
+		system("cls");
+		char readA[25] = "ASCII\\reserveSuccess.txt";
+		outputMenu(readA);
 		cout << endl;
-		cout << "                Seat  : " << seat.getseatId() << endl; 
-		cout << "                Price : " << flight.getprice() << " Baht" << endl;
-		cout << " Ticket Id : " << ticketId << endl;
-		cout << "===============================================================" << endl;
+		ticketId = s->createTickedId(flight.getFlightCode(),seat.getseatId());
+		cout << "======================== Ticket =======================" << endl;
+		char read[25] = "ASCII\\airplane.txt";
+		outputMenu(read);
+		cout << "    <" << flight.getStart() << ">                             <" << flight.getdestination() << ">"<< endl;
+		cout << endl;
+		cout << "+++ Travel information +++" << endl;
+		cout << "  -> FlightCode : " << flight.getFlightCode() <<endl;
+		cout << "  -> Start : "<< flight.getStart() << endl;
+		cout << "  -> Destination : "<< flight.getdestination() << endl;
+		cout << "  -> DepartureTime : "<< flight.getdepartureTime() << endl;
+		cout << "  -> ArriveTime : "<< flight.getarriveTime() << endl;
+	//
+		cout << endl;
+		cout << "+++ Seat +++" << endl;
+		cout << "  -> SeatID : " << seat.getseatId() << endl;
+		cout << endl;
+		cout << "+++ Charges(/person) ++" << endl;
+		cout << "  -> Price : " << flight.getprice() << " Baht" << endl;
+		cout << endl;
+		cout << "+++ Traveler information +++" << endl;
+		cout << "  -> Firstname :" << customer.getFirstname() << endl;
+		cout << "  -> Lastname : " << customer.getLastname() << endl;
+		cout << "  -> Passport ID : " << customer.getPassportId() << endl;
+		cout << endl;
+		cout << "*** Ticket ID : #" << ticketId << endl;
+		cout << "=======================================================" << endl;
 		s->saveTicketinformation(customer,flight,seat,ticketId);
 	}//check customer or employee
 	return true;
@@ -116,19 +152,37 @@ void UI::reserveTicketName(string firstname,string lastname,string passportId){
 	string ticketId;
 	ReservationController *re = new ReservationController(); 
 	customer = re->reserveTicketName(firstname,lastname,passportId);
-	cout << "=========================================" << endl;
-	cout << customer.getFirstname() << " "<< customer.getLastname() <<" "<< customer.getPassportId() << endl;
-	cout << "=========================================" << endl;
 	ticketId = re->createTickedId(flight.getFlightCode(),seat.getseatId());
-	cout << "Ticket ID : " << ticketId << endl;
-	cout << "============================ Ticket ===========================" << endl;
-	cout <<  customer.getFirstname() << " " << customer.getLastname() <<" " << customer.getPassportId() << endl;
-	cout << flight.getStart() << "->" << flight.getdestination() << " | " << flight.getdepartureTime() << "-" << flight.getarriveTime() << " | " << flight.getFlightCode() <<endl;
+	system("cls");
+	char readA[25] = "ASCII\\reserveSuccess.txt";
+	outputMenu(readA);
 	cout << endl;
-	cout << "                Seat  : " << seat.getseatId() << endl; 
-	cout << "                Price : " << flight.getprice() << " Baht" << endl;
-	cout << " Ticket Id : " << ticketId << endl;
-	cout << "===============================================================" << endl;
+	cout << "======================== Ticket =======================" << endl;
+	char read[25] = "ASCII\\airplane.txt";
+	outputMenu(read);
+	cout << "    <" << flight.getStart() << ">                             <" << flight.getdestination() << ">"<< endl;
+	cout << endl;
+	cout << "+++ Travel information +++" << endl;
+	cout << "  -> FlightCode : " << flight.getFlightCode() <<endl;
+	cout << "  -> Start : "<< flight.getStart() << endl;
+	cout << "  -> Destination : "<< flight.getdestination() << endl;
+	cout << "  -> DepartureTime : "<< flight.getdepartureTime() << endl;
+	cout << "  -> ArriveTime : "<< flight.getarriveTime() << endl;
+	//
+	cout << endl;
+	cout << "+++ Seat +++" << endl;
+	cout << "  -> SeatID : " << seat.getseatId() << endl;
+	cout << endl;
+	cout << "+++ Charges(/person) ++" << endl;
+	cout << "  -> Price : " << flight.getprice() << " Baht" << endl;
+	cout << endl;
+	cout << "+++ Traveler information +++" << endl;
+	cout << "  -> Firstname :" << customer.getFirstname() << endl;
+	cout << "  -> Lastname : " << customer.getLastname() << endl;
+	cout << "  -> Passport ID : " << customer.getPassportId() << endl;
+	cout << endl;
+	cout << "*** Ticket ID : #" << ticketId << endl;
+	cout << "=======================================================" << endl;
 	re->saveTicketinformation(customer,flight,seat,ticketId);
 }
 
