@@ -107,6 +107,7 @@ int main(int argc, char** argv) {
 																	cout << "======= Researve Flight Ticket =======" << endl;
 																	cout << "Enter FlightCode : ";
 																	cin >> flightCode;
+																	do{
 																	system("cls");
 																	if(interface->reserveTicket(flightCode,checkcustomer) == 0){
 																		goto showFlightCustomer;
@@ -115,6 +116,7 @@ int main(int argc, char** argv) {
 																	cout << "========== Choose Seat ===========" << endl;
 												     				cout << "Enter Seat No. : ";
 																	cin >> numseat;
+																	}while(numseat!="1"||numseat!="2"||numseat!="3"||numseat!="4"||numseat!="5"||numseat!="6"||numseat!="7"||numseat!="8"||numseat!="9"||numseat!="10");
 																	if(interface->reserveSeat(numseat,flightCode,checkcustomer)==0){
 																	cout<<endl;
 																	cout << "-> Seat not available." << endl;
@@ -216,13 +218,16 @@ int main(int argc, char** argv) {
 											cout << "======= Researve Flight Ticket =======" << endl;
 											cout << "Enter FlightCode : ";
 											cin >> flightCode;
-											system("cls");
-											if(interface->reserveTicket(flightCode,checkcustomer) == 0){
-												goto showFlightEmployee;
-											}
-											cout << "========== Choose Seat ===========" << endl;
-											cout << "Enter Seat No. : ";
-											cin >> numseat;
+											do{
+												system("cls");
+												if(interface->reserveTicket(flightCode,checkcustomer) == 0){
+													goto showFlightEmployee;
+												}
+												cout << "========== Choose Seat ===========" << endl;
+												cout << "Enter Seat No. : ";
+	
+												cin >> numseat;
+											}while(numseat!="1"||numseat!="2"||numseat!="3"||numseat!="4"||numseat!="5"||numseat!="6"||numseat!="7"||numseat!="8"||numseat!="9"||numseat!="10");
 											if(interface->reserveSeat(numseat,flightCode,checkcustomer)==0){
 												cout << "Seat not avalable" << endl;
 												enter();
@@ -318,7 +323,7 @@ int main(int argc, char** argv) {
  									outputMenu(readA);
 									cout << endl;
 									cout << "======== Check-In Flight ========" << endl;
-									cout << "Enter FlightCode : ";
+									cout << "Enter TicketID : ";
 									cin >> ticketcode;
 									if(interface->checkin(ticketcode)==0){
 										system("cls");
@@ -342,7 +347,7 @@ int main(int argc, char** argv) {
  									outputMenu(readA);
 									cout << endl;
 									cout << "======== Cancel Flight ========" << endl;
-									cout << "Enter FlightCode : ";
+									cout << "Enter TicketID : ";
 									cin >> ticketcode;
 									if(interface->cancelTicketId(ticketcode)== 0){
 										system("cls");

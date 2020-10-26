@@ -96,7 +96,7 @@ Seat Seat::reserveSeat(string Id,string flightCode){
 	for(int i=0;i<k;i++){
 		if(flight[i]== flightCode){
 			if(1 == id){
-				s1[i]= "Reserved";
+				s1[i] = "Reserved";
 				se.seatId = Id;
 				se.status = "Reserved";
 			}else if(2 == id){

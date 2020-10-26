@@ -123,9 +123,8 @@ void ReservationCustomer::setStatusCancel(string s,string ticketid){
 			i++;
 	}
 	for(int i=0;i<k;i++){
-		if(Ticketcheck[i] == ticketid){
+		if(Ticketcheck[i] == ticketid && status[i] == "Reserved"){
 			status[i] = s;
-			
 		}
 	}
 	ofstream write;
@@ -177,7 +176,7 @@ void ReservationCustomer::setStatusCheckin(string s,string ticketid){
 			i++;
 	}
 	for(int i=0;i<k;i++){
-		if(Ticketcheck[i] == ticketid){
+		if(Ticketcheck[i] == ticketid && status[i] == "Reserved"){
 			status[i] = s;
 		}
 	}
